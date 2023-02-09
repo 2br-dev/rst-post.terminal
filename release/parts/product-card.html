@@ -1,0 +1,22 @@
+<div class="product-card">
+	<div class="image-holder">
+		<img src="@@image" alt="" class="product-image">
+	</div>
+	<div class="product-data">
+		<div class="name">@@name</div>
+		<div class="price">@@price</div>
+		<div class="price-flipper">
+			<div class="front">
+				<button class="bttn-accent price-flip-trigger touchable"><i class="mdi mdi-cart-arrow-down"></i>В корзину</button>
+			</div>
+			<div class="back">
+				<div class="counter">
+					<button class="minus touchable price-decrease"><i class="mdi mdi-minus"></i></button>
+					<input type="number" class="current" value="1">
+					<button class="plus touchable price-increase"><i class="mdi mdi-plus"></i></button>
+				</div>
+			</div>
+		</div>
+		<div class="remains">В наличии: @@remains</div>
+	</div>
+</div>

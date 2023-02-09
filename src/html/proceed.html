@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('./parts/head.html', {title: "Каталог продукции"})
+</head>
+<body class="full-page">
+	@@include('./parts/location.html')
+	<div class="content-wrapper">
+		<div class="header">
+			<div class="header-top">
+				<div class="ht-left">
+					<a href="./cart-full.html" class="bttn touchable"><i class="mdi mdi-chevron-left"></i>Корзина</a>
+					<h1>Оформление заказа</h1>
+				</div>
+				<div class="ht-right">
+					<div class="logo"></div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<form action="" id="personal-data">
+				<div class="input-field">
+					<label for="">Укажите фамилию, имя и отчество получателя</label>
+					<input type="text" placeholder="Например Сидоров Иван Петрович">
+				</div>
+				<div class="input-field">
+					<label for="">Укажите дату рождения получателя</label>
+					<div class="triple-field">
+						<div class="combo-field day">
+							<input type="hidden" name="day">
+							<div class="current">День</div>
+							<ul></ul>
+						</div>
+						<div class="combo-field month">
+							<input type="hidden" name="month">
+							<div class="current">Месяц</div>
+							<ul>
+								@@include('./parts/monthes.html')
+							</ul>
+						</div>
+						<div class="combo-field year">
+							<input type="hidden" name="year">
+							<div class="current">Год</div>
+							<ul></ul>
+						</div>
+					</div>
+				</div>
+				<div class="input-field comments">
+					<label for="">Комментарии</label>
+					<textarea name="" id="" cols="30" rows="10"></textarea>
+				</div>
+			</form>
+			<div class="separator"></div>
+			<div class="cart-footer">
+				<div class="cart-info">
+					<div class="info-top">Итого к оплате</div>
+					<div class="summ">980₽</div>
+				</div>
+				<div class="cart-actions">
+					<a href="/success.html" class="bttn-accent touchable">Оформить</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/master.js"></script>
+</body>
+</html>

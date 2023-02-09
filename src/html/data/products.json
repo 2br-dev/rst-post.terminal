@@ -1,0 +1,74 @@
+[
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Вермишель на домашнем бульоне с курицей 60г",
+		"price": "22 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Лапша 70 г Доширак Квисти курица",
+		"price": "28 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Повидло 870 г Яблочное SAVA",
+		"price": "225 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Масло подсолнечное \"Аннинское\" рафинированное 0,9 л",
+		"price": "115 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Малина протертая с сахаром Сава 280 г",
+		"price": "138 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Лапша 70 г Доширак Квисти говядина",
+		"price": "28 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Каша овсяная Ясно Солнышко 270 гр",
+		"price": "186 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Лапша \"Анаком\" с говяжьим бульоном 75 г",
+		"price": "52 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Лапша \"Анаком\" с куриным бульоном 75 г",
+		"price": "52 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Вермишель 60 г Анаком с куриным бульоном",
+		"price": "24 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Соль пищевая 1 кг",
+		"price": "23 ₽",
+		"remains": "108 шт"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Масло Урожайное рафинированное 0,87 л",
+		"price": "124 ₽",
+		"remains": "108 шт"
+	}
+]

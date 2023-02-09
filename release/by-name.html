@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Поиск по ФИО получателя</title>
+<link rel="stylesheet" href="/css/master.css">
+</head>
+<body>
+	<div class="location">Хабаровский край, СИЗО №1</div>
+	<div class="content-wrapper">
+		<div class="logo"></div>
+		<h1>Поиск заказа</h1>
+		<form action="" id="search-by-name">
+			<div class="input-field">
+				<label for="">Фамилия, имя, отчество</label>
+				<input type="text" placeholder="Пожалуйста, укажите ФИО получателя">
+			</div>
+			<div class="input-field">
+				<label for="">Дата рождения</label>
+				<div class="triple-field">
+					<div class="combo-field day">
+						<input type="hidden" name="day">
+						<div class="current">День</div>
+						<ul></ul>
+					</div>
+					<div class="combo-field month">
+						<input type="hidden" name="month">
+						<div class="current">Месяц</div>
+						<ul>
+							<li class="touchable" data-val="1">Январь</li>
+<li class="touchable" data-val="2">Февраль</li>
+<li class="touchable" data-val="3">Март</li>
+<li class="touchable" data-val="4">Апрель</li>
+<li class="touchable" data-val="5">Май</li>
+<li class="touchable" data-val="6">Июнь</li>
+<li class="touchable" data-val="7">Июль</li>
+<li class="touchable" data-val="8">Август</li>
+<li class="touchable" data-val="9">Сентябрь</li>
+<li class="touchable" data-val="10">Октябрь</li>
+<li class="touchable" data-val="11">Ноябрь</li>
+<li class="touchable" data-val="12">Декабрь</li>
+						</ul>
+					</div>
+					<div class="combo-field year">
+						<input type="hidden" name="year">
+						<div class="current">Год</div>
+						<ul></ul>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="helpers-wrapper">
+			<a href="./search-criteria.html" class="bttn-outline touchable">Назад</a>
+			<a href="./search-results-name.html" class="bttn-accent touchable">Поиск</a>
+		</div>
+	</div>
+	<script src="/js/master.js"></script>
+</body>
+</html>

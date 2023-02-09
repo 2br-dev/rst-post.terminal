@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('./parts/head.html', {title: "Каталог продукции"})
+</head>
+<body class="full-page">
+	@@include('./parts/location.html')
+	<div class="content-wrapper">
+		<div class="header">
+			<div class="header-top">
+				<div class="ht-left">
+					<a href="./catalog.html" class="bttn touchable"><i class="mdi mdi-chevron-left"></i>Каталог</a>
+					<h1>Корзина</h1>
+				</div>
+				<div class="ht-right">
+					<div class="logo"></div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="cart-content">
+				<table class="browser-default">
+					<tbody>
+						@@loop('./parts/cart-row.html', './data/cart-content.json')
+					</tbody>
+				</table>
+			</div>
+			<div class="cart-footer">
+				<div class="cart-info">
+					<div class="info-top">Итого к оплате</div>
+					<div class="summ">980₽</div>
+				</div>
+				<div class="cart-actions">
+					<a href="/cart-empty.html" class="bttn-outline touchable">Очистить</a>
+					<a href="/proceed.html" class="bttn-accent touchable">Далее</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/master.js"></script>
+</body>
+</html>

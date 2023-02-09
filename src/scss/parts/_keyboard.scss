@@ -1,0 +1,81 @@
+.screen-keyboard
+{
+	position: relative;
+	position: fixed;
+	width: 100%;
+	height: 40vh;
+	bottom: 0;
+	left: 0;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-gap: .25vmax;
+	padding: 4.2vmax;
+	box-sizing: border-box;
+	background: $bg;
+	transition: transform .4s;
+	transform:translateY(100%);
+	pointer-events: none;
+	z-index: 200;
+
+	&.shown
+	{
+		transform: none;
+		pointer-events: all;
+	}
+
+	& .closer
+	{
+		position: absolute;
+		top: 18px;
+		right: 4.2vmax;
+		width: fit-content;
+		background: $key;
+		border-radius: 5px;
+		font-family: 'Montserrat';
+		text-align: center;
+		font-size: 10px;
+		text-transform: uppercase;
+		padding: 4px 20px;
+	}
+
+	&.shift
+	{
+
+		& .key
+		{
+			text-transform: uppercase;
+
+			&.shift
+			{
+				background-color: $primary;
+				color: #fff;
+			}
+		}
+	}
+
+	& .key
+	{
+		border: 0;
+		font-size: 2vmax;
+		font-family: 'Montserrat';
+		font-weight: 600;
+		border-radius: .4vmax;
+		background: $key;
+
+		&.long
+		{
+			grid-column: auto / span 2;
+		}
+
+		&.space
+		{
+			grid-column: auto / span 6;
+		}
+
+		&.pressed
+		{
+			background-color: $primary;
+			color: #fff;
+		}
+	}
+}

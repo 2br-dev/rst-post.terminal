@@ -1,0 +1,38 @@
+[
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Вермишель на домашнем бульоне с курицей 60г",
+		"remains": "108 шт",
+		"price": "245 ₽"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Лапша 70 г Доширак Квисти курица",
+		"remains": "108 шт",
+		"price": "245 ₽"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Повидло 870 г Яблочное SAVA",
+		"remains": "108 шт",
+		"price": "245 ₽"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Масло подсолнечное \"Аннинское\" рафинированное 0,9 л",
+		"remains": "108 шт",
+		"price": "245 ₽"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Малина протертая с сахаром Сава 280 г",
+		"remains": "108 шт",
+		"price": "245 ₽"
+	},
+	{
+		"image": "/img/big-lunch.png",
+		"name": "Лапша 70 г Доширак Квисти говядина",
+		"remains": "108 шт",
+		"price": "245 ₽"
+	}
+]

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('./parts/head.html', {title: "Поиск по номеру заказа"})
+</head>
+<body>
+	@@include('./parts/location.html')
+	<div class="content-wrapper">
+		<div class="logo"></div>
+		<h1>Поиск заказа</h1>
+		<form action="" id="search-by-name">
+			<div class="input-field">
+				<label for="">Укажите номер заказа</label>
+				<input type="text" placeholder="Например, 123456" id="ordernum">
+			</div>
+		</form>
+		<div class="helpers-wrapper">
+			<a href="./search-criteria.html" class="bttn-outline touchable">Назад</a>
+			<a href="./search-results-num.html" class="bttn-accent touchable">Поиск</a>
+		</div>
+	</div>
+	<script src="/js/master.js"></script>
+</body>
+</html>

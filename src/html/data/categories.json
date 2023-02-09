@@ -1,0 +1,77 @@
+[
+	{
+		"name": "Бакалея",
+		"image": "/img/grocery.png",
+		"class": "active"
+	},
+	{
+		"name": "Гастрономия",
+		"image": "/img/gastronomy.png",
+		"class": ""
+	},
+	{
+		"name": "Консервы",
+		"image": "/img/canned.png",
+		"class": ""
+	},
+	{
+		"name": "Чай, кофе, сахар, мед",
+		"image": "/img/tea-coffee.png",
+		"class": ""
+	},
+	{
+		"name": "Кондитерские изделия",
+		"image": "/img/bakery.png",
+		"class": ""
+	},
+	{
+		"name": "Напитки",
+		"image": "/img/drinks.png",
+		"class": ""
+	},
+	{
+		"name": "Овощи и фрукты",
+		"image": "/img/vegetables.png",
+		"class": ""
+	},
+	{
+		"name": "Молочная продукция",
+		"image": "/img/milk.png",
+		"class": ""
+	},
+	{
+		"name": "Хлебобулочные изделия",
+		"image": "/img/bread.png",
+		"class": ""
+	},
+	{
+		"name": "Соусы и специи",
+		"image": "/img/souces.png",
+		"class": ""
+	},
+	{
+		"name": "Красота и здоровье",
+		"image": "/img/beauty.png",
+		"class": ""
+	},
+	{
+		"name": "Хозтовары",
+		"image": "/img/households.png",
+		"class": ""
+	},
+	{
+		"name": "Канцелярские товары",
+		"image": "/img/stationery.png",
+		"class": ""
+	},
+	{
+		"name": "Электроприборы",
+		"image": "/img/electrical.png",
+		"class": ""
+	},
+	{
+		"name": "Сертификаты",
+		"image": "/img/certificates.png",
+		"class": ""
+	}
+]

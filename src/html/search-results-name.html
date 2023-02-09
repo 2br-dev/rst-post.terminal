@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('./parts/head.html', {title: 'Результаты поиска'})
+</head>
+<body class="full-page">
+	@@include('./parts/location.html')
+	<div class="content-wrapper">
+		<div class="header">
+			<div class="header-top">
+				<div class="ht-left">
+					<a href="./by-name.html" class="bttn touchable"><i class="mdi mdi-chevron-left"></i>Назад</a>
+					<h1>Результаты поиска</h1>
+				</div>
+				<div class="ht-right">
+					<div class="logo"></div>
+				</div>
+			</div>
+			<div class="header-bottom">
+				<div class="conditions">
+					<div class="condition">
+						Условия поиска: <strong>Иванов Сидор Петрович</strong>
+					</div>
+					<div class="condition">
+						Дата рождения: <strong>12 апреля 2022</strong>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="results-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Номер</th>
+							<th>Дата</th>
+							<th>Сумма</th>
+							<th>Статус</th>
+						</tr>
+					</thead>
+					<tbody>
+						@@loop('./parts/result-row.html', './data/search-results.json')
+					</tbody>
+				</table>
+			</div>
+			<div class="helper-wrapper center-align">
+				<a href="./index.html" class="bttn touchable">На главную</a>
+			</div>
+		</div>
+	</div>
+	<script src="/js/master.js"></script>
+</body>
+</html>

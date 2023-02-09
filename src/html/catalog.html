@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('./parts/head.html', {title: "Каталог продукции"})
+</head>
+<body class="full-page">
+	@@include('./parts/location.html')
+	<div class="content-wrapper">
+		<div class="header">
+			<div class="header-top">
+				<div class="ht-left">
+					<a href="./index.html" class="bttn touchable"><i class="mdi mdi-chevron-left"></i>Главная</a>
+					<h1>Каталог</h1>
+				</div>
+				<div class="ht-right">
+					<div class="logo"></div>
+					@@include('./parts/cart-icon.html')
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="categories">
+				@@loop('./parts/category-card.html', './data/categories.json')
+			</div>
+		</div>
+	</div>
+	<script src="/js/master.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('./parts/head.html', {title: "Каталог продукции"})
+</head>
+<body class="full-page">
+	@@include('./parts/location.html')
+	<div class="content-wrapper">
+		<div class="header">
+			<div class="header-top">
+				<div class="ht-left">
+					<h1>Корзина</h1>
+				</div>
+				<div class="ht-right">
+					<div class="logo"></div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="cart-content huge-content" id="empty-cart">
+				<i class="mdi mdi-cart-off page-icon"></i>
+				<h2>В корзине ничего нет</h2>
+				<a href="/catalog.html" class="bttn-accent touchable">Начать покупки</a>
+			</div>
+		</div>
+	</div>
+	<script src="/js/master.js"></script>
+</body>
+</html>

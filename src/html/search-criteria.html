@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('./parts/head.html', {title: "Выбор критерия поиска"})
+</head>
+<body>
+	@@include('./parts/location.html')
+	<div class="content-wrapper">
+		<div class="logo"></div>
+		<h1>Поиск заказа</h1>
+		<div class="buttons-wrapper">
+			<a class="bttn waves-effect waves-dark huge z-depth-3 touchable" href="by-name.html">По ФИО и дате<br> рождения</a>
+			<a class="bttn waves-effect waves-dark huge z-depth-3 touchable" href="by-number.html">По номеру<br> заказа</a>
+		</div>
+		<div class="helper-wrapper">
+			<div class="helper">
+				Пожалуйста, выберите критерий поиска <br>
+			</div>
+			<a href="index.html" class="bttn waves-effect waves-dark touchable"><i class="mdi mdi-chevron-left"></i>На главную</a>
+		</div>
+	</div>
+	<script src="/js/master.js"></script>
+</body>
+</html>

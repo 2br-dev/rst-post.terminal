@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('./parts/head.html', {title: "Поиск по ФИО получателя"})
+</head>
+<body>
+	@@include('./parts/location.html')
+	<div class="content-wrapper">
+		<div class="logo"></div>
+		<h1>Поиск заказа</h1>
+		<form action="" id="search-by-name">
+			<div class="input-field">
+				<label for="">Фамилия, имя, отчество</label>
+				<input type="text" placeholder="Пожалуйста, укажите ФИО получателя">
+			</div>
+			<div class="input-field">
+				<label for="">Дата рождения</label>
+				<div class="triple-field">
+					<div class="combo-field day">
+						<input type="hidden" name="day">
+						<div class="current">День</div>
+						<ul></ul>
+					</div>
+					<div class="combo-field month">
+						<input type="hidden" name="month">
+						<div class="current">Месяц</div>
+						<ul>
+							@@include('./parts/monthes.html')
+						</ul>
+					</div>
+					<div class="combo-field year">
+						<input type="hidden" name="year">
+						<div class="current">Год</div>
+						<ul></ul>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="helpers-wrapper">
+			<a href="./search-criteria.html" class="bttn-outline touchable">Назад</a>
+			<a href="./search-results-name.html" class="bttn-accent touchable">Поиск</a>
+		</div>
+	</div>
+	<script src="/js/master.js"></script>
+</body>
+</html>

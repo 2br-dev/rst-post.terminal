@@ -185,6 +185,38 @@ function decreaseCount(e:MouseEvent)
 
 }
 
+// Переключение экрана
+function switchScreen(screen:number)
+{
+
+	let stepContainer = <HTMLDivElement>document.querySelector("[data-step]");
+
+	let step1_text = "Каталог";
+	let step1_link = "./catalog.html"
+	let step1_header = "Корзина";
+	
+	let step2_text = "Корзина";
+	let step2_link = "#!";
+	let step2_header = "Оформление заказа";
+
+
+	let backButton = <HTMLLinkElement>document.querySelector("#back-button");
+	let backButton_text = <HTMLSpanElement>backButton.querySelector(".button-text");
+	let header = <HTMLHeadingElement>document.querySelector('#cart-title');
+
+	stepContainer.dataset['step'] = screen.toString();
+	
+	if( screen > 1 ){
+		backButton_text.innerText = step2_text;
+		backButton.href = step2_link;
+		header.textContent = step2_header;
+	}else{
+		backButton_text.innerText = step1_text;
+		backButton.href = step1_link;
+		header.textContent = step1_header;
+	}
+}
+
 (() => {
 	
 	fillYears(); //Заполняем годы
@@ -325,6 +357,27 @@ function decreaseCount(e:MouseEvent)
 	document.querySelectorAll('.combo-field.month li').forEach(el => {
 		el.addEventListener('click', setMonth)
 	});
+
+	// Переход на предыдущий экран
+	document.querySelector('#back-button')?.addEventListener('click', (evt:MouseEvent) => {
+
+		let stepContainer = <HTMLDivElement>document.querySelector("[data-step]");
+		let currentStep = parseInt(stepContainer.dataset['step']);
+
+		if(currentStep > 1)
+		{
+			evt.preventDefault();
+			switchScreen(1);
+		}
+	});
+
+	// Переход на следующий экран
+	document.querySelector('#next-button')?.addEventListener('click', (evt:MouseEvent) => {
+		evt.preventDefault();
+		let stepContainer = <HTMLDivElement>document.querySelector("[data-step]");
+		// stepContainer.dataset['step'] = "2";
+		switchScreen(2);
+	})
 
 	// Предотвращение контекстного меню
 	document.addEventListener("contextmenu", (e) => {e.preventDefault()});

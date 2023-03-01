@@ -68,7 +68,12 @@ function fillDays()
 			let dayEl = document.createElement("li");
 			dayEl.classList.add('touchable');
 			dayEl.innerText = i.toString();
-			dayEl.dataset['val'] = i.toString();
+			let dayVal = i.toString();
+			if(i<10){
+                dayEl.dataset['val'] = '0'+dayVal;
+            }else{
+                dayEl.dataset['val'] = dayVal;
+            }
 			dayEl.onclick = setDay;
 			
 			dayUl?.appendChild(dayEl);
@@ -95,6 +100,16 @@ function setDay(e:MouseEvent)
 	currentEl.innerText = selectedDay;
 	currentInput.value = selectedDay;
 
+    let elDayOfBirth = (<HTMLInputElement>document.querySelector('#dayofbirth'));
+    let monthValue = (<HTMLInputElement>document.querySelector('[name="month"]')).value;
+    let yearValue = (<HTMLInputElement>document.querySelector('[name="year"]')).value;
+
+    if(monthValue != "" && yearValue != ""){
+        elDayOfBirth.value = yearValue+'-'+monthValue+'-'+selectedDay;
+    }else{
+        elDayOfBirth.value = "";
+    }
+
 	currentEl.classList.add('settled');
 	(<HTMLDivElement>this.parentElement.parentElement).classList.remove('hover');
 }
@@ -107,6 +122,16 @@ function setMonth(e:MouseEvent)
 	
 	let selectedText = this.innerText;
 	let selectedValue = this.dataset['val'];
+
+	let elDayOfBirth = (<HTMLInputElement>document.querySelector('#dayofbirth'));
+	let dayValue = (<HTMLInputElement>document.querySelector('[name="day"]')).value;
+	let yearValue = (<HTMLInputElement>document.querySelector('[name="year"]')).value;
+
+	if(dayValue != "" && yearValue != ""){
+	    elDayOfBirth.value = yearValue+'-'+selectedValue+'-'+dayValue;
+    }else{
+	    elDayOfBirth.value = "";
+    }
 
 	currentInputEl.value = selectedValue;
 	currentEl.classList.add('settled');
@@ -127,6 +152,17 @@ function setYear(e:MouseEvent)
 	currentContainer.classList.add('settled');
 
 	yearInput.value = this.dataset['val'];
+	let selectedYear = this.dataset['val'];
+
+    let elDayOfBirth = (<HTMLInputElement>document.querySelector('#dayofbirth'));
+    let monthValue = (<HTMLInputElement>document.querySelector('[name="month"]')).value;
+    let dayValue = (<HTMLInputElement>document.querySelector('[name="day"]')).value;
+
+    if(monthValue != "" && dayValue != ""){
+        elDayOfBirth.value = selectedYear+'-'+monthValue+'-'+dayValue;
+    }else{
+        elDayOfBirth.value = "";
+    }
 
 	(<HTMLDivElement>currentContainer.parentElement).classList.remove('hover');
 	fillDays();
@@ -217,7 +253,8 @@ function switchScreen(screen:number)
 	}
 }
 
-(() => {
+
+document.addEventListener("DOMContentLoaded", function(event) {
 	
 	fillYears(); //Заполняем годы
 	fillDays(); //Заполняем дни
@@ -381,4 +418,4 @@ function switchScreen(screen:number)
 
 	// Предотвращение контекстного меню
 	document.addEventListener("contextmenu", (e) => {e.preventDefault()});
-})();
+});

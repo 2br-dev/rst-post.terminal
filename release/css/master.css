@@ -20987,16 +20987,16 @@ body {
       background-color: #4E9912;
       color: #fff; }
 
-body.welcome {
+.welcome {
   background-color: #4E9912; }
-  body.welcome .logo {
+  .welcome .logo {
     background-image: url(../img/logo-dark.svg);
     margin-bottom: 8vmax; }
-  body.welcome .buttons-wrapper .bttn.huge, body.welcome .buttons-wrapper .huge.bttn-outline, body.welcome .buttons-wrapper .huge.bttn-accent {
+  .welcome .buttons-wrapper .bttn.huge, .welcome .buttons-wrapper body .huge.bttn-outline, body .welcome .buttons-wrapper .huge.bttn-outline, .welcome .buttons-wrapper body .huge.bttn-accent, body .welcome .buttons-wrapper .huge.bttn-accent {
     color: #4E9912;
     background: linear-gradient(to bottom, white, #cccccc);
     border: 0; }
-    body.welcome .buttons-wrapper .bttn.huge.pressed, body.welcome .buttons-wrapper .huge.pressed.bttn-outline, body.welcome .buttons-wrapper .huge.pressed.bttn-accent {
+    .welcome .buttons-wrapper .bttn.huge.pressed, .welcome .buttons-wrapper body .huge.pressed.bttn-outline, body .welcome .buttons-wrapper .huge.pressed.bttn-outline, .welcome .buttons-wrapper body .huge.pressed.bttn-accent, body .welcome .buttons-wrapper .huge.pressed.bttn-accent {
       background: linear-gradient(to bottom, #cccccc, white); }
 
 body .triple-field {

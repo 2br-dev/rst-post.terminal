@@ -20857,6 +20857,9 @@ body .header {
       flex-grow: 1; }
       body .header .header-top .ht-left h1 {
         margin: 0 20px; }
+        body .header .header-top .ht-left h1.success {
+          color: #4E9912;
+          margin: 0; }
     body .header .header-top .ht-right {
       flex-shrink: 0;
       display: flex; }
@@ -20924,6 +20927,18 @@ body * {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none; }
+
+body .ordernum {
+  color: #4E9912;
+  box-shadow: 0 0 0 2px #4E9912;
+  display: inline-flex; }
+  body .ordernum .num-sign {
+    background: #4E9912;
+    display: block;
+    color: #fff;
+    padding: 0 5px; }
+  body .ordernum .num {
+    padding: 0 5px; }
 
 body {
   font-family: 'Montserrat';

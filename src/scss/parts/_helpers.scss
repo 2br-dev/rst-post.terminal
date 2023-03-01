@@ -238,6 +238,11 @@ body{
 
 				& h1{
 					margin: 0 20px;
+
+					&.success{
+						color: $primary;
+						margin: 0;
+					}
 				}
 			}
 
@@ -350,5 +355,22 @@ body{
 
 	& * {
 		user-select: none;
+	}
+
+	& .ordernum{
+		color: $primary;
+		box-shadow: 0 0 0 2px $primary;
+		display: inline-flex;
+		
+		& .num-sign{
+			background: $black;
+			display: block;
+			color: #fff;
+			padding: 0 5px;
+		}
+		
+		& .num{
+			padding: 0 5px;
+		}
 	}
 }

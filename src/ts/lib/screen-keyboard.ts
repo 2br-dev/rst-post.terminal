@@ -23,17 +23,6 @@ class Keyboard implements IKeyboard
 {
 	private keys = [];
 	private default_keys = [
-		'1',
-		'2',
-		'3',
-		'4',
-		'5',
-		'6',
-		'7',
-		'8',
-		'9',
-		'0',
-		'⌫',
 		'ё',
 		'й',
 		'ц',
@@ -44,6 +33,7 @@ class Keyboard implements IKeyboard
 		'г',
 		'ш',
 		'щ',
+		'⌫',
 		'з',
 		'х',
 		'ъ',
@@ -58,7 +48,6 @@ class Keyboard implements IKeyboard
 		'д',
 		'ж',
 		'э',
-		'⇧',
 		'я',
 		'ч',
 		'с',
@@ -66,16 +55,11 @@ class Keyboard implements IKeyboard
 		'и',
 		'т',
 		'ь',
+		'ъ',
 		'б',
 		'ю',
-		'"',
-		'.',
-		',',
-		'(',
-		')',
-		' ',
-		'+',
-		'-',
+		'⇧',
+		' '
 	];
 	public shiftPressed:boolean;
 	public container:HTMLDivElement;

@@ -54,10 +54,16 @@ $border-radius: 6px;
 $key: rgba(white, .9);
 $bg: rgba($primary, .7);
 
+*{
+	-webkit-user-drag: none;
+}
+
 @mixin scrollbars{
 
+	padding-right: 24px;
+
 	&::-webkit-scrollbar{
-		width: 6px;
+		width: 12px;
 	}
 	
 	&::-webkit-scrollbar-thumb{

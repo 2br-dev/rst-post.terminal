@@ -462,6 +462,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		});
 	});
 
+	document.querySelectorAll('.overflow').forEach((overflow:HTMLElement) => {
+
+		overflow.addEventListener('mouseleave', (e:MouseEvent) => {
+			touched=false;
+			setTimeout(() => {
+				touchX = undefined;
+				touchY = undefined;
+				startX = undefined;
+				startY = undefined;
+			}, 80);
+		});
+	});
+
 	document.querySelectorAll('a').forEach((a:HTMLElement) => {
 
 		a.addEventListener('click', (e:MouseEvent) => {

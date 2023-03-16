@@ -19,14 +19,14 @@
 			</div>
 			<div class="header-bottom">
 				<div class="quick-categories-wrapper">
-					<div class="quick-categories">
+					<div class="quick-categories overflow">
 						@@loop('./parts/quick-category.html', './data/categories.json')
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="content">
-			<div class="products">
+			<div class="products overflow">
 				@@loop('./parts/product-card.html', './data/products.json')
 			</div>
 		</div>

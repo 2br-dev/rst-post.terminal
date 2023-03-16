@@ -3,6 +3,11 @@ import Keyboard from './lib/screen-keyboard';
 
 let kb:Keyboard;
 let focusedInput:HTMLInputElement | HTMLTextAreaElement;
+let touched:boolean = false;
+let touchX:number;
+let touchY:number;
+let startX:number;
+let startY:number;
 
 // Заполняем список лет
 function fillYears()
@@ -100,7 +105,7 @@ function setDay(e:MouseEvent)
 	currentEl.innerText = selectedDay;
 	currentInput.value = selectedDay;
 
-    let elDayOfBirth = (<HTMLInputElement>document.querySelector('#dayofbirth'));
+    let elDayOfBirth = (<HTMLInputElement>document.querySelector('[name="day"]'));
     let monthValue = (<HTMLInputElement>document.querySelector('[name="month"]')).value;
     let yearValue = (<HTMLInputElement>document.querySelector('[name="year"]')).value;
 
@@ -123,7 +128,7 @@ function setMonth(e:MouseEvent)
 	let selectedText = this.innerText;
 	let selectedValue = this.dataset['val'];
 
-	let elDayOfBirth = (<HTMLInputElement>document.querySelector('#dayofbirth'));
+	let elDayOfBirth = (<HTMLInputElement>document.querySelector('[name="day"]'));
 	let dayValue = (<HTMLInputElement>document.querySelector('[name="day"]')).value;
 	let yearValue = (<HTMLInputElement>document.querySelector('[name="year"]')).value;
 
@@ -133,7 +138,7 @@ function setMonth(e:MouseEvent)
 	    elDayOfBirth.value = "";
     }
 
-	currentInputEl.value = selectedValue;
+	// currentInputEl.value = selectedValue;
 	currentEl.classList.add('settled');
 	currentEl.innerText = selectedText;
 
@@ -154,7 +159,7 @@ function setYear(e:MouseEvent)
 	yearInput.value = this.dataset['val'];
 	let selectedYear = this.dataset['val'];
 
-    let elDayOfBirth = (<HTMLInputElement>document.querySelector('#dayofbirth'));
+    let elDayOfBirth = (<HTMLInputElement>document.querySelector('[name="day"]'));
     let monthValue = (<HTMLInputElement>document.querySelector('[name="month"]')).value;
     let dayValue = (<HTMLInputElement>document.querySelector('[name="day"]')).value;
 
@@ -418,4 +423,52 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// Предотвращение контекстного меню
 	document.addEventListener("contextmenu", (e) => {e.preventDefault()});
+
+	// :::::::::::::::::::: Програмный скрол :::::::::::::::::::::::
+	document.querySelectorAll('.overflow').forEach((overflow:HTMLElement) => {
+
+		overflow.addEventListener('mousedown', (e:MouseEvent) => {
+			touched = true;
+			touchX = e.clientX;
+			startX = e.clientX;
+			touchY = e.clientY;
+			startY = e.clientY;
+		});
+	});
+
+	document.querySelectorAll('.overflow').forEach((overflow:HTMLElement) => {
+
+		overflow.addEventListener('mousemove', (e:MouseEvent) => {
+			if(touched){
+				let el = e.currentTarget;
+				(<HTMLElement>el).scrollTop -= (e.movementY * 2);
+				(<HTMLElement>el).scrollLeft -= (e.movementX * 2);
+				touchX = e.clientX;
+				touchY = e.clientY;
+			}
+		});
+	});
+
+	document.querySelectorAll('.overflow').forEach((overflow:HTMLElement) => {
+
+		overflow.addEventListener('mouseup', (e:MouseEvent) => {
+			touched=false;
+			setTimeout(() => {
+				touchX = undefined;
+				touchY = undefined;
+				startX = undefined;
+				startY = undefined;
+			}, 80);
+		});
+	});
+
+	document.querySelectorAll('a').forEach((a:HTMLElement) => {
+
+		a.addEventListener('click', (e:MouseEvent) => {
+			if(startX != touchX || startY != touchY){
+				e.preventDefault();
+				e.stopImmediatePropagation();
+			}
+		});
+	});
 });

@@ -22,7 +22,7 @@
 		</div>
 		<form class="content" data-step="1">
 			<div class="step-1">
-				<div class="cart-content">
+				<div class="cart-content overflow">
 					<table class="browser-default">
 						<tbody>
 							@@loop('./parts/cart-row.html', './data/cart-content.json')
@@ -53,19 +53,19 @@
 							<div class="combo-field day">
 								<input type="hidden" name="day" value="">
 								<div class="current">День</div>
-								<ul></ul>
+								<ul class="overflow"></ul>
 							</div>
 							<div class="combo-field month">
 								<input type="hidden" name="month">
 								<div class="current">Месяц</div>
-								<ul>
+								<ul class="overflow">
 									@@include('./parts/monthes.html')
 								</ul>
 							</div>
 							<div class="combo-field year">
 								<input type="hidden" name="year">
 								<div class="current">Год</div>
-								<ul></ul>
+								<ul class="overflow"></ul>
 							</div>
 						</div>
 					</div>

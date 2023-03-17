@@ -3,55 +3,57 @@
 <head>
 	@@include('./parts/head.html', {title: "Заказ успешно оформлен"})
 </head>
-<body class="full-page">
-	@@include('./parts/location.html')
-	<div class="content-wrapper">
-		<div class="header">
-			<div class="header-top">
-				<div class="ht-left">
-					<h1 class="success"><i class="mdi mdi-check-circle page-icon"></i> Заказ успешно оформлен</h1>
-				</div>
-				<div class="ht-right">
-					<div class="logo"></div>
-				</div>
-			</div>
-			<div class="header-bottom">
-				<div class="conditions">
-					<div class="condition">
-						Получатель: <strong>Иванов Сидор Петрович</strong>
+<body>
+	<div class="full-page">
+		@@include('./parts/location.html')
+		<div class="content-wrapper">
+			<div class="header">
+				<div class="header-top">
+					<div class="ht-left">
+						<h1 class="success"><i class="mdi mdi-check-circle page-icon"></i> Заказ успешно оформлен</h1>
 					</div>
-					<div class="condition">
-						Д/Р: <strong>26.09.1974</strong>
-					</div>
-					<div class="condition">
-						Учреждение: <strong>Хабаровский край, СИЗО №1</strong>
+					<div class="ht-right">
+						<div class="logo"></div>
 					</div>
 				</div>
+				<div class="header-bottom">
+					<div class="conditions">
+						<div class="condition">
+							Получатель: <strong>Иванов Сидор Петрович</strong>
+						</div>
+						<div class="condition">
+							Д/Р: <strong>26.09.1974</strong>
+						</div>
+						<div class="condition">
+							Учреждение: <strong>Хабаровский край, СИЗО №1</strong>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="content">
-			<div class="results-wrapper">
-				<p>
-					<strong> Состав заказа <span class="ordernum"><span class="num-sign">№</span><span class="num">456789</span></strong>
-				</p>
-				<table>
-					<thead>
-						<tr>
-							<th>Наименование</th>
-							<th>Количество</th>
-							<th>Сумма</th>
-						</tr>
-					</thead>
-					<tbody>
-						@@loop('./parts/cart-row-success.html', './data/cart-content.json')
-					</tbody>
-				</table>
-				<p>
-					<strong class="right">Сумма заказа: 1470 ₽</strong>
-				</p>
-			</div>
-			<div class="helper-wrapper center-align">
-				<a href="./index.html" class="bttn touchable">На главную</a>
+			<div class="content">
+				<div class="results-wrapper">
+					<p>
+						<strong> Состав заказа <span class="ordernum"><span class="num-sign">№</span><span class="num">456789</span></strong>
+					</p>
+					<table>
+						<thead>
+							<tr>
+								<th>Наименование</th>
+								<th>Количество</th>
+								<th>Сумма</th>
+							</tr>
+						</thead>
+						<tbody>
+							@@loop('./parts/cart-row-success.html', './data/cart-content.json')
+						</tbody>
+					</table>
+					<p>
+						<strong class="right">Сумма заказа: 1470 ₽</strong>
+					</p>
+				</div>
+				<div class="helper-wrapper center-align">
+					<a href="./index.html" class="bttn touchable">На главную</a>
+				</div>
 			</div>
 		</div>
 	</div>

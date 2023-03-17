@@ -139,6 +139,8 @@ body{
 			flex-grow: 1;
 			display: flex;
 			flex-direction: column;
+			box-sizing: border-box;
+			height: calc(100vh - 166px);
 
 			& .separator{
 				flex-grow: 1;

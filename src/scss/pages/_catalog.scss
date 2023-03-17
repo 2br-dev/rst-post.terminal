@@ -62,32 +62,68 @@ body{
 
 		position: relative;
 
-		&:before{
-			content: '';
+		& .scroll-button{
+
+			$buttonSize: 70px;
+
 			display: block;
-			width: 30px;
-			height: 100%;
-			top: 0;
-			left: 0;
+			width: $buttonSize;
+			height: $buttonSize;
+			line-height: $buttonSize;
 			position: absolute;
-			background: linear-gradient(to right, white 10%, transparent);
-			z-index: 1;
-			pointer-events: none;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			text-align: center;
+			color: $primary;
+			font-size: 50px;
+			border-top-right-radius: 50%;
+			border-bottom-right-radius: 50%;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			background: #fff;
+			z-index: 2;
+			border-right: 1px solid $primary;
+
+			&#scroll-right{
+				left: unset;
+				right: 0;
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				border-top-left-radius: 50%;
+				border-bottom-left-radius: 50%;
+				border-left: 1px solid $primary;
+				border-right: 0;
+			}
 		}
 
-		&:after{
-			@extend:before;
-			left: unset;
-			right: 0;
-			background: linear-gradient(to right, transparent , white 90%);
-		}
+
+		// &:before{
+		// 	content: '';
+		// 	display: block;
+		// 	width: 30px;
+		// 	height: 100%;
+		// 	top: 0;
+		// 	left: 0;
+		// 	position: absolute;
+		// 	background: linear-gradient(to right, white 10%, transparent);
+		// 	z-index: 1;
+		// 	pointer-events: none;
+		// }
+
+		// &:after{
+		// 	@extend:before;
+		// 	left: unset;
+		// 	right: 0;
+		// 	background: linear-gradient(to right, transparent , white 90%);
+		// }
 
 		& .quick-categories{
 			display: flex;
 			max-width: 100%;
 			overflow-x: auto;
 			overflow-y: hidden;
-			padding: 6px 30px;
+			padding: 6px 70px;
 	
 			&::-webkit-scrollbar{
 				height: 5px;

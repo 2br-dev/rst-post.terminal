@@ -3,31 +3,35 @@
 <head>
 	@@include('./parts/head.html', {title: "Название категории"})
 </head>
-<body class="full-page">
-	@@include('./parts/location.html')
-	<div class="content-wrapper">
-		<div class="header">
-			<div class="header-top">
-				<div class="ht-left">
-					<a href="./catalog.html" class="bttn"><i class="mdi mdi-chevron-left"></i>Каталог</a>
-					<h1>Название категории</h1>
+<body>
+	<div class="full-page">
+		@@include('./parts/location.html')
+		<div class="content-wrapper">
+			<div class="header">
+				<div class="header-top">
+					<div class="ht-left">
+						<a href="./catalog.html" class="bttn"><i class="mdi mdi-chevron-left"></i>Каталог</a>
+						<h1>Название категории</h1>
+					</div>
+					<div class="ht-right">
+						<div class="logo"></div>
+						@@include('./parts/cart-icon.html')
+					</div>
 				</div>
-				<div class="ht-right">
-					<div class="logo"></div>
-					@@include('./parts/cart-icon.html')
-				</div>
-			</div>
-			<div class="header-bottom">
-				<div class="quick-categories-wrapper">
-					<div class="quick-categories overflow">
-						@@loop('./parts/quick-category.html', './data/categories.json')
+				<div class="header-bottom">
+					<div class="quick-categories-wrapper">
+						<div class="quick-categories overflow">
+							<a href="#!" class="scroll-button" id="scroll-left"><i class="mdi mdi-chevron-left"></i></a>
+							@@loop('./parts/quick-category.html', './data/categories.json')
+							<a href="#!" class="scroll-button" id="scroll-right"><i class="mdi mdi-chevron-right"></i></a>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="content">
-			<div class="products overflow">
-				@@loop('./parts/product-card.html', './data/products.json')
+			<div class="content">
+				<div class="products overflow">
+					@@loop('./parts/product-card.html', './data/products.json')
+				</div>
 			</div>
 		</div>
 	</div>

@@ -8,6 +8,7 @@ let touchX:number;
 let touchY:number;
 let startX:number;
 let startY:number;
+let pressInterval: NodeJS.Timer;
 
 // Заполняем список лет
 function fillYears()
@@ -581,6 +582,7 @@ if(document.querySelectorAll(".rs-checkout_form").length){
         }, 800);
     }
 }
+
 if(document.querySelectorAll(".rs-amount").length) {
     (<HTMLInputElement>document.querySelector(".rs-amount")).onchange = () => {
         setTimeout(() => {
@@ -638,3 +640,20 @@ if(document.querySelectorAll(".rs-amount").length) {
         }, 800);
     }
 }
+
+$('body').on('mousedown', '.scroll-button', (e:JQuery.MouseDownEvent) => {
+	e.preventDefault();
+	
+	let direction = $(e.currentTarget).attr("id");
+	pressInterval = setInterval(() => {
+		let current = $('.quick-categories').scrollLeft();
+		let speed = direction == "scroll-left" ? -10 : 10;
+		let newScroll = current + speed;
+		$('.quick-categories').scrollLeft(newScroll);
+	}, 10);
+});
+
+$('body').on('mouseup', '.scroll-button', (e:JQuery.MouseUpEvent) => {
+	e.preventDefault();
+	clearInterval(pressInterval);
+});

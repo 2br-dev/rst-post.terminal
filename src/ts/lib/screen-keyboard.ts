@@ -33,7 +33,7 @@ class Keyboard implements IKeyboard
 		'г',
 		'ш',
 		'щ',
-		'⌫',
+		'⇐',
 		'з',
 		'х',
 		'ъ',
@@ -128,7 +128,7 @@ class Keyboard implements IKeyboard
 		let retChar;
 		switch(char)
 		{
-			case("⌫"):
+			case("⇐"):
 				this.onErase();
 				break;
 			case("⇧"):
@@ -176,7 +176,7 @@ class Key
 			case " ":
 				keyElement.classList.add('space');
 				break;
-			case "⌫":
+			case "⇐":
 				keyElement.classList.add('long');
 				break;
 			case "⇧":

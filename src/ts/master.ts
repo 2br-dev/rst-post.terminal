@@ -56,6 +56,13 @@ function fillDays()
 		// Получаем количество дней в этом месяце
 		let daysCount = new Date(year, month, 0).getDate();
 
+		let monthElement = <HTMLInputElement>document.querySelector('[name="month"]');
+        let yearElement = <HTMLInputElement>document.querySelector('[name="year"]');
+
+        if(monthElement.value == "" && yearElement.value==""){
+            daysCount = 31;
+        }
+
 		// Получаем выбранный день
 		let selectedDay:number = parseInt((<HTMLInputElement>document.querySelector('[name="day"]')).value);
 		if(selectedDay > daysCount)
@@ -105,14 +112,15 @@ function setDay(e:MouseEvent)
 	currentEl.innerText = selectedDay;
 	currentInput.value = selectedDay;
 
-    let elDayOfBirth = (<HTMLInputElement>document.querySelector('[name="day"]'));
     let monthValue = (<HTMLInputElement>document.querySelector('[name="month"]')).value;
     let yearValue = (<HTMLInputElement>document.querySelector('[name="year"]')).value;
 
+    let elDateOfBirth = (<HTMLInputElement>document.querySelector('[name="userfields_arr[dateofbirth]"]'));
+
     if(monthValue != "" && yearValue != ""){
-        elDayOfBirth.value = yearValue+'-'+monthValue+'-'+selectedDay;
+        elDateOfBirth.value = yearValue+'-'+monthValue+'-'+selectedDay;
     }else{
-        elDayOfBirth.value = "";
+        elDateOfBirth.value = "";
     }
 
 	currentEl.classList.add('settled');
@@ -128,14 +136,17 @@ function setMonth(e:MouseEvent)
 	let selectedText = this.innerText;
 	let selectedValue = this.dataset['val'];
 
-	let elDayOfBirth = (<HTMLInputElement>document.querySelector('[name="day"]'));
+    currentInputEl.value = selectedValue;
+
 	let dayValue = (<HTMLInputElement>document.querySelector('[name="day"]')).value;
 	let yearValue = (<HTMLInputElement>document.querySelector('[name="year"]')).value;
 
+    let elDateOfBirth = (<HTMLInputElement>document.querySelector('[name="userfields_arr[dateofbirth]"]'));
+
 	if(dayValue != "" && yearValue != ""){
-	    elDayOfBirth.value = yearValue+'-'+selectedValue+'-'+dayValue;
+        elDateOfBirth.value = yearValue+'-'+selectedValue+'-'+dayValue;
     }else{
-	    elDayOfBirth.value = "";
+        elDateOfBirth.value = "";
     }
 
 	// currentInputEl.value = selectedValue;
@@ -159,14 +170,15 @@ function setYear(e:MouseEvent)
 	yearInput.value = this.dataset['val'];
 	let selectedYear = this.dataset['val'];
 
-    let elDayOfBirth = (<HTMLInputElement>document.querySelector('[name="day"]'));
     let monthValue = (<HTMLInputElement>document.querySelector('[name="month"]')).value;
     let dayValue = (<HTMLInputElement>document.querySelector('[name="day"]')).value;
 
+    let elDateOfBirth = (<HTMLInputElement>document.querySelector('[name="userfields_arr[dateofbirth]"]'));
+
     if(monthValue != "" && dayValue != ""){
-        elDayOfBirth.value = selectedYear+'-'+monthValue+'-'+dayValue;
+        elDateOfBirth.value = selectedYear+'-'+monthValue+'-'+dayValue;
     }else{
-        elDayOfBirth.value = "";
+        elDateOfBirth.value = "";
     }
 
 	(<HTMLDivElement>currentContainer.parentElement).classList.remove('hover');
@@ -194,37 +206,37 @@ function priceShowFlip(e:MouseEvent)
 }
 
 // Добавление элемента в корзину
-function increaseCount(e:MouseEvent)
-{
-	let el = e.currentTarget;
-	let $parent = $(el).parents('.price-flipper');
-
-	let input = <HTMLInputElement>$parent.find('input[type="number"]').get(0);
-	let value = parseInt(input.value);
-	
-	value ++;
-
-	input.value = value.toString();
-}
+// function increaseCount(e:MouseEvent)
+// {
+// 	let el = e.currentTarget;
+// 	let $parent = $(el).parents('.price-flipper');
+//
+// 	let input = <HTMLInputElement>$parent.find('input[type="number"]').get(0);
+// 	let value = parseInt(input.value);
+//
+// 	value ++;
+//
+// 	input.value = value.toString();
+// }
 
 // Удаление элемента из корзины (-1)
-function decreaseCount(e:MouseEvent)
-{
-	let el = e.currentTarget;
-	let $parent = $(el).parents('.price-flipper');
-
-	let input = <HTMLInputElement>$parent.find('input[type="number"]').get(0);
-	let value = parseInt(input.value);
-	
-	value --;
-
-	if( value >= 1 ){
-		input.value = value.toString();
-	}else{
-		$parent.removeClass('counter-shown');
-	}
-
-}
+// function decreaseCount(e:MouseEvent)
+// {
+// 	let el = e.currentTarget;
+// 	let $parent = $(el).parents('.price-flipper');
+//
+// 	let input = <HTMLInputElement>$parent.find('input[type="number"]').get(0);
+// 	let value = parseInt(input.value);
+//
+// 	value --;
+//
+// 	if( value >= 1 ){
+// 		input.value = value.toString();
+// 	}else{
+// 		$parent.removeClass('counter-shown');
+// 	}
+//
+// }
 
 // Переключение экрана
 function switchScreen(screen:number)
@@ -308,14 +320,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 
 	// Увеличение количества в карточке
-	document.querySelectorAll('.price-increase').forEach(el => {
-		el.addEventListener('click', increaseCount);
-	});
-
-	// Уменьшение количества в карточке
-	document.querySelectorAll('.price-decrease').forEach(el => {
-		el.addEventListener('click', decreaseCount);
-	});
+	// document.querySelectorAll('.price-increase').forEach(el => {
+	// 	el.addEventListener('click', increaseCount);
+	// });
+    //
+	// // Уменьшение количества в карточке
+	// document.querySelectorAll('.price-decrease').forEach(el => {
+	// 	el.addEventListener('click', decreaseCount);
+	// });
 
 	// Вызов экранной клавиатуры
 	document.querySelectorAll('input[type="text"]').forEach(element => {
@@ -401,25 +413,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 
 	// Переход на предыдущий экран
-	document.querySelector('#back-button')?.addEventListener('click', (evt:MouseEvent) => {
-
-		let stepContainer = <HTMLDivElement>document.querySelector("[data-step]");
-		let currentStep = parseInt(stepContainer.dataset['step']);
-
-		if(currentStep > 1)
-		{
-			evt.preventDefault();
-			switchScreen(1);
-		}
-	});
+	// document.querySelector('#back-button')?.addEventListener('click', (evt:MouseEvent) => {
+    //
+	// 	let stepContainer = <HTMLDivElement>document.querySelector("[data-step]");
+	// 	let currentStep = parseInt(stepContainer.dataset['step']);
+    //
+	// 	if(currentStep > 1)
+	// 	{
+	// 		evt.preventDefault();
+	// 		switchScreen(1);
+	// 	}
+	// });
 
 	// Переход на следующий экран
-	document.querySelector('#next-button')?.addEventListener('click', (evt:MouseEvent) => {
-		evt.preventDefault();
-		let stepContainer = <HTMLDivElement>document.querySelector("[data-step]");
-		// stepContainer.dataset['step'] = "2";
-		switchScreen(2);
-	})
+	// document.querySelector('#next-button')?.addEventListener('click', (evt:MouseEvent) => {
+	// 	evt.preventDefault();
+	// 	let stepContainer = <HTMLDivElement>document.querySelector("[data-step]");
+	// 	// stepContainer.dataset['step'] = "2";
+	// 	switchScreen(2);
+	// })
 
 	// Предотвращение контекстного меню
 	document.addEventListener("contextmenu", (e) => {e.preventDefault()});
@@ -485,3 +497,144 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		});
 	});
 });
+
+if(document.querySelectorAll(".rs-checkout_form").length){
+    (<HTMLFormElement>document.querySelector(".rs-checkout_form")).onsubmit = () => {
+        setTimeout(()=>{
+            fillDays();
+            fillYears();
+            // Вызов экранной клавиатуры
+            document.querySelectorAll('input[type="text"]').forEach(element => {
+
+                element.addEventListener("focus", evt => {
+
+                    focusedInput = <HTMLInputElement>evt.currentTarget;
+                    kb.onOpenEnd = () => {
+                        focusedInput.focus();
+                    }
+                    kb.open();
+                });
+            });
+            // Раскрытие выпадающего списка
+            document.querySelectorAll('.combo-field .current').forEach(el => {
+                (<HTMLDivElement>el).onclick = (e:MouseEvent) => {
+
+                    document.querySelectorAll('.combo-field.hover').forEach(el => {
+                        el.classList.remove('hover');
+                    })
+
+                    let field = (<HTMLDivElement>e.currentTarget).parentElement;
+                    field?.classList.add('hover');
+                }
+            });
+            // :::::::::::::::::::: Програмный скрол :::::::::::::::::::::::
+            document.querySelectorAll('.overflow').forEach((overflow:HTMLElement) => {
+
+                overflow.addEventListener('mousedown', (e:MouseEvent) => {
+                    touched = true;
+                    touchX = e.clientX;
+                    startX = e.clientX;
+                    touchY = e.clientY;
+                    startY = e.clientY;
+                });
+            });
+
+            document.querySelectorAll('.overflow').forEach((overflow:HTMLElement) => {
+
+                overflow.addEventListener('mousemove', (e:MouseEvent) => {
+                    if(touched){
+                        let el = e.currentTarget;
+                        (<HTMLElement>el).scrollTop -= (e.movementY * 2);
+                        (<HTMLElement>el).scrollLeft -= (e.movementX * 2);
+                        touchX = e.clientX;
+                        touchY = e.clientY;
+                    }
+                });
+            });
+
+            document.querySelectorAll('.overflow').forEach((overflow:HTMLElement) => {
+
+                overflow.addEventListener('mouseup', (e:MouseEvent) => {
+                    touched=false;
+                    setTimeout(() => {
+                        touchX = undefined;
+                        touchY = undefined;
+                        startX = undefined;
+                        startY = undefined;
+                    }, 80);
+                });
+            });
+
+            document.querySelectorAll('.overflow').forEach((overflow:HTMLElement) => {
+
+                overflow.addEventListener('mouseleave', (e:MouseEvent) => {
+                    touched=false;
+                    setTimeout(() => {
+                        touchX = undefined;
+                        touchY = undefined;
+                        startX = undefined;
+                        startY = undefined;
+                    }, 80);
+                });
+            });
+
+        }, 800);
+    }
+}
+if(document.querySelectorAll(".rs-amount").length) {
+    (<HTMLInputElement>document.querySelector(".rs-amount")).onchange = () => {
+        setTimeout(() => {
+            // :::::::::::::::::::: Програмный скрол :::::::::::::::::::::::
+            document.querySelectorAll('.overflow').forEach((overflow: HTMLElement) => {
+
+                overflow.addEventListener('mousedown', (e: MouseEvent) => {
+                    touched = true;
+                    touchX = e.clientX;
+                    startX = e.clientX;
+                    touchY = e.clientY;
+                    startY = e.clientY;
+                });
+            });
+
+            document.querySelectorAll('.overflow').forEach((overflow: HTMLElement) => {
+
+                overflow.addEventListener('mousemove', (e: MouseEvent) => {
+                    if (touched) {
+                        let el = e.currentTarget;
+                        (<HTMLElement>el).scrollTop -= (e.movementY * 2);
+                        (<HTMLElement>el).scrollLeft -= (e.movementX * 2);
+                        touchX = e.clientX;
+                        touchY = e.clientY;
+                    }
+                });
+            });
+
+            document.querySelectorAll('.overflow').forEach((overflow: HTMLElement) => {
+
+                overflow.addEventListener('mouseup', (e: MouseEvent) => {
+                    touched = false;
+                    setTimeout(() => {
+                        touchX = undefined;
+                        touchY = undefined;
+                        startX = undefined;
+                        startY = undefined;
+                    }, 80);
+                });
+            });
+
+            document.querySelectorAll('.overflow').forEach((overflow: HTMLElement) => {
+
+                overflow.addEventListener('mouseleave', (e: MouseEvent) => {
+                    touched = false;
+                    setTimeout(() => {
+                        touchX = undefined;
+                        touchY = undefined;
+                        startX = undefined;
+                        startY = undefined;
+                    }, 80);
+                });
+            });
+
+        }, 800);
+    }
+}

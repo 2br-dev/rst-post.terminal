@@ -7,29 +7,30 @@
 <title>Каталог продукции</title>
 <link rel="stylesheet" href="/css/master.css">
 </head>
-<body class="full-page">
-	<div class="location">Хабаровский край, СИЗО №1</div>
-	<div class="content-wrapper">
-		<div class="header">
-			<div class="header-top">
-				<div class="ht-left">
-					<a href="./catalog.html" class="bttn touchable" id="back-button">
-						<i class="mdi mdi-chevron-left"></i>
-						<span class="button-text">Каталог</span>
-					</a>
-					<h1 id="cart-title">Корзина</h1>
-				</div>
-				<div class="ht-right">
-					<div class="logo"></div>
+<body>
+	<div class="full-page">
+		<div class="location">Хабаровский край, СИЗО №1</div>
+		<div class="content-wrapper">
+			<div class="header">
+				<div class="header-top">
+					<div class="ht-left">
+						<a href="./catalog.html" class="bttn touchable" id="back-button">
+							<i class="mdi mdi-chevron-left"></i>
+							<span class="button-text">Каталог</span>
+						</a>
+						<h1 id="cart-title">Корзина</h1>
+					</div>
+					<div class="ht-right">
+						<div class="logo"></div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<form class="content" data-step="1">
-			<div class="step-1">
-				<div class="cart-content overflow">
-					<table class="browser-default">
-						<tbody>
-							<tr>
+			<form class="content" data-step="1">
+				<div class="step-1">
+					<div class="cart-content overflow">
+						<table class="browser-default">
+							<tbody>
+								<tr>
 	<td><img src="/img/big-lunch.png" alt=""></td>
 	<td>
 		<div class="name">Вермишель на домашнем бульоне с курицей 60г</div>
@@ -120,40 +121,40 @@
 	<td><div class="price">245 ₽</div></td>
 	<td><div class="action"><a href=""><i class="mdi mdi-delete"></i></a></div></td>
 </tr>
-						</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
+					<div class="cart-footer">
+						<div class="cart-info">
+							<div class="info-top">Итого к оплате</div>
+							<div class="summ">980₽</div>
+						</div>
+						<div class="cart-actions">
+							<a href="/cart-empty.html" class="bttn-outline touchable">Очистить</a>
+							<a href="#!" class="bttn-accent touchable" id="next-button">Далее</a>
+						</div>
+					</div>
 				</div>
-				<div class="cart-footer">
-					<div class="cart-info">
-						<div class="info-top">Итого к оплате</div>
-						<div class="summ">980₽</div>
-					</div>
-					<div class="cart-actions">
-						<a href="/cart-empty.html" class="bttn-outline touchable">Очистить</a>
-						<a href="#!" class="bttn-accent touchable" id="next-button">Далее</a>
-					</div>
-				</div>
-			</div>
-			<div class="step-2">
-				<div id="personal-data">
-					<div class="input-field">
-						<label for="">Введите Ваше имя</label>
-						<input type="text" placeholder="Например Сидоров Иван Петрович">
-					</div>
-					<div class="input-field">
-                        <input type="hidden" id="dayofbirth" value="">
-						<label for="">Введите дату вашего рождения</label>
-						<div class="triple-field">
-							<div class="combo-field day">
-								<input type="hidden" name="day" value="">
-								<div class="current">День</div>
-								<ul class="overflow"></ul>
-							</div>
-							<div class="combo-field month">
-								<input type="hidden" name="month">
-								<div class="current">Месяц</div>
-								<ul class="overflow">
-									<li class="touchable" data-val="01">Январь</li>
+				<div class="step-2">
+					<div id="personal-data">
+						<div class="input-field">
+							<label for="">Введите Ваше имя</label>
+							<input type="text" placeholder="Например Сидоров Иван Петрович">
+						</div>
+						<div class="input-field">
+							<input type="hidden" id="dayofbirth" value="">
+							<label for="">Введите дату вашего рождения</label>
+							<div class="triple-field">
+								<div class="combo-field day">
+									<input type="hidden" name="day" value="">
+									<div class="current">День</div>
+									<ul class="overflow"></ul>
+								</div>
+								<div class="combo-field month">
+									<input type="hidden" name="month">
+									<div class="current">Месяц</div>
+									<ul class="overflow">
+										<li class="touchable" data-val="01">Январь</li>
 <li class="touchable" data-val="02">Февраль</li>
 <li class="touchable" data-val="03">Март</li>
 <li class="touchable" data-val="04">Апрель</li>
@@ -166,28 +167,29 @@
 <li class="touchable" data-val="11">Ноябрь</li>
 <li class="touchable" data-val="12">Декабрь</li>
 
-								</ul>
-							</div>
-							<div class="combo-field year">
-								<input type="hidden" name="year">
-								<div class="current">Год</div>
-								<ul class="overflow"></ul>
+									</ul>
+								</div>
+								<div class="combo-field year">
+									<input type="hidden" name="year">
+									<div class="current">Год</div>
+									<ul class="overflow"></ul>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="separator"></div>
-				<div class="cart-footer">
-					<div class="cart-info">
-						<div class="info-top">Итого к оплате</div>
-						<div class="summ">980₽</div>
+					<div class="separator"></div>
+					<div class="cart-footer">
+						<div class="cart-info">
+							<div class="info-top">Итого к оплате</div>
+							<div class="summ">980₽</div>
+						</div>
+						<div class="cart-actions">
+							<a href="/success.html" class="bttn-accent touchable">Оформить</a>
+						</div>
 					</div>
-					<div class="cart-actions">
-						<a href="/success.html" class="bttn-accent touchable">Оформить</a>
-					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 	<script src="/js/master.js"></script>
 </body>

@@ -11,6 +11,10 @@ let startX:number;
 let startY:number;
 let pressInterval: NodeJS.Timer;
 
+let secondsLeft:number = 15;
+let secondsModalTrigger = 14;
+let inactiveTimeout:NodeJS.Timeout;
+
 // Заполняем список лет
 function fillYears()
 {
@@ -283,7 +287,6 @@ function switchScreen(screen:number)
 	}
 }
 
-
 document.addEventListener("DOMContentLoaded", function(event) {
 	
 	fillYears(); //Заполняем годы
@@ -537,6 +540,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}
 		});
 	});
+
+	// ::::::::::::::::::: Отслеживание бездействия :::::::::::::::::::::::::::
+	createInactiveTimer();
 });
 
 if(document.querySelectorAll(".rs-checkout_form").length){
@@ -701,3 +707,88 @@ $('body').on('mouseup', '.scroll-button', (e:JQuery.MouseUpEvent) => {
 	e.preventDefault();
 	clearInterval(pressInterval);
 });
+
+$('body').on('mousemove', () => {
+	destroyInactiveTimer();
+	createInactiveTimer();
+});
+
+$('body').on('mouseup', () => {
+	destroyInactiveTimer();
+	createInactiveTimer();
+});
+
+$('body').on('touchmove', () => {
+	destroyInactiveTimer();
+	createInactiveTimer();
+});
+
+function createInactiveTimer()
+{
+	
+	if(window.location.pathname == "/") return;
+
+	inactiveTimeout = setInterval(() => {
+
+		if(secondsLeft > 0)
+		{
+			secondsLeft-=1;
+		}
+
+		if(secondsLeft == secondsModalTrigger)
+		{
+
+			let modal = document.createElement('div');
+			modal.id = "inactive-modal";
+			modal.classList.add('inactive-modal');
+	
+			let buttonsContainer = document.createElement("div");
+			buttonsContainer.classList.add("buttons-wrapper");
+			
+			let modalText = document.createElement('p');
+			modalText.innerHTML = "Через <strong id='seconds-left'>15</strong> секунд вы будете перенаправлены на главную страницу. <br><strong>Корзина при этом будет сброшена</strong>.";
+	
+			let shadow = document.createElement('div');
+			shadow.id="shadow";
+	
+			let noButton = document.createElement("a");
+			noButton.classList.add('bttn-accent');
+			noButton.textContent = "Отмена";
+	
+			noButton.addEventListener('click', () => {
+				clearInterval(inactiveTimeout);
+	
+				document.body.removeChild(modal);
+				document.body.removeChild(shadow);
+	
+				secondsLeft=15;
+	
+				createInactiveTimer();
+			});
+	
+			modal.appendChild(modalText);
+			buttonsContainer.appendChild(noButton);
+			modal.appendChild(buttonsContainer);
+
+			if(!document.querySelectorAll('#inactive-modal').length){
+				document.body.appendChild(modal);
+				document.body.appendChild(shadow);
+			}
+		}
+
+		if(secondsLeft == 0)
+		{
+			// window.location.href = "/";
+		}
+
+		if(document.querySelectorAll('#seconds-left').length)
+		{
+			document.querySelector('#seconds-left').textContent = secondsLeft.toString();
+		}
+	}, 1000);
+}
+
+function destroyInactiveTimer()
+{
+	clearInterval(inactiveTimeout);
+}

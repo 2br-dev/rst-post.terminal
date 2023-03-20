@@ -2,6 +2,7 @@
 import Keyboard from './lib/screen-keyboard';
 
 let kb:Keyboard;
+let digiKb:Keyboard;
 let focusedInput:HTMLInputElement | HTMLTextAreaElement;
 let touched:boolean = false;
 let touchX:number;
@@ -118,11 +119,15 @@ function setDay(e:MouseEvent)
 
     let elDateOfBirth = (<HTMLInputElement>document.querySelector('[name="userfields_arr[dateofbirth]"]'));
 
-    if(monthValue != "" && yearValue != ""){
-        elDateOfBirth.value = yearValue+'-'+monthValue+'-'+selectedDay;
-    }else{
-        elDateOfBirth.value = "";
-    }
+	if(elDateOfBirth)
+	{
+		if(monthValue != "" && yearValue != ""){
+			elDateOfBirth.value = yearValue+'-'+monthValue+'-'+selectedDay;
+		}else{
+			elDateOfBirth.value = "";
+		}
+	}
+
 
 	currentEl.classList.add('settled');
 	(<HTMLDivElement>this.parentElement.parentElement).classList.remove('hover');
@@ -144,11 +149,14 @@ function setMonth(e:MouseEvent)
 
     let elDateOfBirth = (<HTMLInputElement>document.querySelector('[name="userfields_arr[dateofbirth]"]'));
 
-	if(dayValue != "" && yearValue != ""){
-        elDateOfBirth.value = yearValue+'-'+selectedValue+'-'+dayValue;
-    }else{
-        elDateOfBirth.value = "";
-    }
+	if(elDateOfBirth)
+	{
+		if(dayValue != "" && yearValue != ""){
+			elDateOfBirth.value = yearValue+'-'+selectedValue+'-'+dayValue;
+		}else{
+			elDateOfBirth.value = "";
+		}
+	}
 
 	// currentInputEl.value = selectedValue;
 	currentEl.classList.add('settled');
@@ -176,14 +184,18 @@ function setYear(e:MouseEvent)
 
     let elDateOfBirth = (<HTMLInputElement>document.querySelector('[name="userfields_arr[dateofbirth]"]'));
 
-    if(monthValue != "" && dayValue != ""){
-        elDateOfBirth.value = selectedYear+'-'+monthValue+'-'+dayValue;
-    }else{
-        elDateOfBirth.value = "";
-    }
-
+	if(elDateOfBirth)
+	{
+		if(monthValue != "" && dayValue != ""){
+			elDateOfBirth.value = selectedYear+'-'+monthValue+'-'+dayValue;
+		}else{
+			elDateOfBirth.value = "";
+		}
+	}
+	
 	(<HTMLDivElement>currentContainer.parentElement).classList.remove('hover');
 	fillDays();
+
 }
 
 // Кликабельные элементы – нажатие
@@ -278,6 +290,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	fillDays(); //Заполняем дни
 
 	kb = new Keyboard(); //Создание клавиатуры
+	let digiKeys = ["1","2","3","4","5","6","7","8","9","0","⇐"];
+	digiKb = new Keyboard({
+		keys: digiKeys,
+		keyClassName: 'digital-key',
+		keyboardClassName: 'digital-keyboard'
+	});
 
 	// Клавиатура – отработка нажатия
 	kb.onKeyPress = char => {
@@ -299,6 +317,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	
 	// Клавиатура – отработка удаления символа
 	kb.onErase = () => {
+		let cursor = focusedInput.selectionStart;
+		let start = focusedInput.value.substring(0, cursor - 1);
+		let end = focusedInput.value.substring(cursor);
+		let final = start + end;
+		focusedInput.value = final;
+		focusedInput.selectionStart = cursor - 1;
+		focusedInput.selectionEnd = cursor - 1;
+	}
+
+	// Клавиатура – отработка нажатия
+	digiKb.onKeyPress = char => {
+	
+		focusedInput.focus();
+	
+		if (char)
+		{
+			let cursor = focusedInput.selectionStart;
+			let start = focusedInput.value.substring(0, cursor);
+			let end = focusedInput.value.substring(cursor);
+			let final = start + char + end;
+			focusedInput.value = final;
+			focusedInput.selectionStart = cursor + 1;
+			focusedInput.selectionEnd = cursor + 1;
+		}
+	
+	}
+	
+	// Клавиатура – отработка удаления символа
+	digiKb.onErase = () => {
 		let cursor = focusedInput.selectionStart;
 		let start = focusedInput.value.substring(0, cursor - 1);
 		let end = focusedInput.value.substring(cursor);
@@ -331,29 +378,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// });
 
 	// Вызов экранной клавиатуры
-	document.querySelectorAll('input[type="text"]').forEach(element => {
-
-		element.addEventListener("focus", evt => {
-
-			focusedInput = <HTMLInputElement>evt.currentTarget;
-			kb.onOpenEnd = () => {
-				focusedInput.focus();
-			}
-			kb.open();
-		});
+	$('body').on('focus', '.text-kb', (e:JQuery.FocusEvent) => {
+		focusedInput = <HTMLInputElement>e.currentTarget;
+		kb.onOpenEnd = () => {
+			focusedInput.focus();
+		}
+		kb.open();
 	});
 
-	// Вызов экранной клавиатуры
-	document.querySelectorAll('textarea').forEach(element => {
-
-		element.addEventListener("focus", evt => {
-
-			focusedInput = <HTMLTextAreaElement>evt.currentTarget;
-			kb.onOpenEnd = () => {
-				focusedInput.focus();
-			}
-			kb.open();
-		});
+	// Вызов цифровой клавиатуры
+	$('body').on('focus', '.digi-kb', (e:JQuery.FocusEvent) => {
+		focusedInput = <HTMLInputElement>e.currentTarget;
+		digiKb.onOpenEnd = () => {
+			focusedInput.focus();
+		}
+		digiKb.open();
 	});
 
 	// Закрытие клавиатуры при тапе мимо
@@ -367,7 +406,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}else{
 				if((<HTMLDivElement>el).classList)
 				{
-					return (<HTMLDivElement>el).classList.contains('key') || (<HTMLDivElement>el).classList.contains('screen-keyboard');
+					return (<HTMLDivElement>el).classList.contains('key') || (<HTMLDivElement>el).classList.contains('screen-keyboard') || (<HTMLDivElement>el).classList.contains('digital-key') || (<HTMLDivElement>el).classList.contains('digital-keyboard');
 				}else{
 					return null;
 				}
@@ -385,6 +424,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		if(!filter.length)
 		{
 			kb.close();
+			digiKb.close();
 		}
 
 		if(!comboboxFilter.length)
@@ -528,6 +568,10 @@ if(document.querySelectorAll(".rs-checkout_form").length){
                     field?.classList.add('hover');
                 }
             });
+			// Установка выбранного элемента выпадающего списка
+			document.querySelectorAll('.combo-field.month li').forEach(el => {
+				el.addEventListener('click', setMonth)
+			});
             // :::::::::::::::::::: Програмный скрол :::::::::::::::::::::::
             document.querySelectorAll('.overflow').forEach((overflow:HTMLElement) => {
 

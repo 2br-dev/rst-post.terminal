@@ -21013,6 +21013,53 @@ body {
       background-color: #4E9912;
       color: #fff; }
 
+.digital-keyboard {
+  position: relative;
+  position: fixed;
+  width: 100%;
+  height: 40vh;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: .25vmax;
+  padding: 4.2vmax;
+  box-sizing: border-box;
+  background: rgba(78, 153, 18, 0.7);
+  transition: transform .4s;
+  transform: translateY(100%);
+  pointer-events: none;
+  z-index: 200; }
+  .digital-keyboard.shown {
+    transform: none;
+    pointer-events: all; }
+  .digital-keyboard .closer {
+    position: absolute;
+    top: 9px;
+    right: 4.2vmax;
+    width: -moz-fit-content;
+    width: fit-content;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    font-family: 'Montserrat';
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 20px; }
+  .digital-keyboard .digital-key {
+    border: 0;
+    font-size: 2.7vmax;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    border-radius: .4vmax;
+    background: rgba(255, 255, 255, 0.9); }
+    .digital-keyboard .digital-key.long {
+      grid-column: auto / span 2; }
+    .digital-keyboard .digital-key.pressed {
+      background-color: #4E9912;
+      color: #fff; }
+
 .welcome {
   background-color: #4E9912; }
   .welcome .logo {

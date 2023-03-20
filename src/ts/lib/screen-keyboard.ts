@@ -185,6 +185,12 @@ class Key
 				break;
 		}
 		keyElement.addEventListener('click', this.onclick.bind(this));
+		keyElement.addEventListener('mousedown', (e:MouseEvent) => {
+			(<HTMLElement>e.currentTarget).classList.add('pressed');
+		});
+		keyElement.addEventListener('mouseup', (e:MouseEvent) => {
+			(<HTMLElement>e.currentTarget).classList.remove('pressed');
+		});
 		container.appendChild(keyElement);
 	}
 

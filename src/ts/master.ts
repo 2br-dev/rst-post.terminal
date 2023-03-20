@@ -11,8 +11,8 @@ let startX:number;
 let startY:number;
 let pressInterval: NodeJS.Timer;
 
-let secondsLeft:number = 15;
-let secondsModalTrigger = 14;
+let secondsLeft:number = 60;
+let secondsModalTrigger = 15;
 let inactiveTimeout:NodeJS.Timeout;
 
 // Заполняем список лет
@@ -761,7 +761,7 @@ function createInactiveTimer()
 				document.body.removeChild(modal);
 				document.body.removeChild(shadow);
 	
-				secondsLeft=15;
+				secondsLeft=60;
 	
 				createInactiveTimer();
 			});
@@ -778,7 +778,7 @@ function createInactiveTimer()
 
 		if(secondsLeft == 0)
 		{
-			// window.location.href = "/";
+			window.location.href = "/";
 		}
 
 		if(document.querySelectorAll('#seconds-left').length)
@@ -791,4 +791,5 @@ function createInactiveTimer()
 function destroyInactiveTimer()
 {
 	clearInterval(inactiveTimeout);
+	secondsLeft = 60;
 }

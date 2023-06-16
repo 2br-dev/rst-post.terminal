@@ -1,5 +1,6 @@
 
 import Keyboard from './lib/screen-keyboard';
+import AirDatepicker from 'air-datepicker';
 
 let kb:Keyboard;
 let digiKb:Keyboard;
@@ -11,7 +12,7 @@ let startX:number;
 let startY:number;
 let pressInterval: NodeJS.Timer;
 
-let secondsLeft:number = 60;
+let secondsLeft:number = 180;
 let secondsModalTrigger = 15;
 let inactiveTimeout:NodeJS.Timeout;
 
@@ -691,6 +692,18 @@ if(document.querySelectorAll(".rs-amount").length) {
     }
 }
 
+if($('.air-picker').length)
+{
+	new AirDatepicker('.air-picker', {
+		view: 'years',
+		position: 'top left',
+		autoClose: true,
+		dateFormat: 'dd MMMM yyyy',
+		minDate: Date.parse('1 jan 1923'),
+		maxDate: Date.parse('31 dec 2023')
+	})
+}
+
 $('body').on('mousedown', '.scroll-button', (e:JQuery.MouseDownEvent) => {
 	e.preventDefault();
 	
@@ -770,6 +783,7 @@ function createInactiveTimer()
 			buttonsContainer.appendChild(noButton);
 			modal.appendChild(buttonsContainer);
 
+
 			if(!document.querySelectorAll('#inactive-modal').length){
 				document.body.appendChild(modal);
 				document.body.appendChild(shadow);
@@ -785,11 +799,17 @@ function createInactiveTimer()
 		{
 			document.querySelector('#seconds-left').textContent = secondsLeft.toString();
 		}
+
+		// console.log({
+		// 	secondsLeft, secondsModalTrigger
+		// })
 	}, 1000);
 }
 
 function destroyInactiveTimer()
 {
 	clearInterval(inactiveTimeout);
-	secondsLeft = 60;
+	secondsLeft = 180;
+
+	$('.inactive-modal').remove();
 }

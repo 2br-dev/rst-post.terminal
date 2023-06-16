@@ -1299,6 +1299,11 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
+air-datepicker@^3.3.5:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/air-datepicker/-/air-datepicker-3.3.5.tgz#c900cf56878a90edcde4bbe0ca452b2ab30f6ba2"
+  integrity sha512-5JQLvhgiOwOX1SGT1Zo1J2GgYijNs9g9yzjvrUWqQekMkuAMRL7m0DNC3zDnm7cNCNAgbE4DF+BBD9w+IbfQow==
+
 ajv-formats@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ajv-formats/-/ajv-formats-2.1.1.tgz#6e669400659eb74973bbf2e33327180a0996b520"

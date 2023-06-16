@@ -71,6 +71,10 @@
 		&.space
 		{
 			grid-column: auto / span 10;
+
+			&:before{
+				content:'Пробел'
+			}
 		}
 
 		&.pressed

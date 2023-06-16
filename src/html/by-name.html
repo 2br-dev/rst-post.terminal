@@ -15,25 +15,7 @@
 			</div>
 			<div class="input-field">
 				<label for="">Дата рождения</label>
-				<div class="triple-field">
-					<div class="combo-field day">
-						<input type="hidden" name="day">
-						<div class="current">День</div>
-						<ul class="overflow"></ul>
-					</div>
-					<div class="combo-field month">
-						<input type="hidden" name="month">
-						<div class="current">Месяц</div>
-						<ul class="overflow">
-							@@include('./parts/monthes.html')
-						</ul>
-					</div>
-					<div class="combo-field year">
-						<input type="hidden" name="year">
-						<div class="current">Год</div>
-						<ul class="overflow"></ul>
-					</div>
-				</div>
+				<input type="text" placeholder="Выберите дату" class="air-picker">
 			</div>
 		</form>
 		<div class="helpers-wrapper">

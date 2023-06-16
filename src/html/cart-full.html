@@ -45,30 +45,11 @@
 					<div id="personal-data">
 						<div class="input-field">
 							<label for="">Введите Ваше имя</label>
-							<input type="text" placeholder="Например Сидоров Иван Петрович">
+							<input type="text" placeholder="Например Сидоров Иван Петрович" class="text-kb">
 						</div>
 						<div class="input-field">
-							<input type="hidden" id="dayofbirth" value="">
-							<label for="">Введите дату вашего рождения</label>
-							<div class="triple-field">
-								<div class="combo-field day">
-									<input type="hidden" name="day" value="">
-									<div class="current">День</div>
-									<ul class="overflow"></ul>
-								</div>
-								<div class="combo-field month">
-									<input type="hidden" name="month">
-									<div class="current">Месяц</div>
-									<ul class="overflow">
-										@@include('./parts/monthes.html')
-									</ul>
-								</div>
-								<div class="combo-field year">
-									<input type="hidden" name="year">
-									<div class="current">Год</div>
-									<ul class="overflow"></ul>
-								</div>
-							</div>
+							<label for="">Дата рождения</label>
+							<input type="text" placeholder="Выберите дату" class="air-picker">
 						</div>
 					</div>
 					<div class="separator"></div>
@@ -78,7 +59,7 @@
 							<div class="summ">980₽</div>
 						</div>
 						<div class="cart-actions">
-							<a href="/success.html" class="bttn-accent touchable">Оформить</a>
+							<a href="/success.html" class="bttn-accent touchable">Завершить оформление</a>
 						</div>
 					</div>
 				</div>

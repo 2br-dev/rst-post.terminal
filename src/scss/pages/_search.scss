@@ -12,7 +12,7 @@ body{
 	}
 	
 	& #ordernum{
-		width: 45vw;
+		// width: 45vw;
 		margin-bottom: 20px;
 	}
 	
@@ -22,6 +22,10 @@ body{
 		& .condition{
 			margin-right: 20px;
 		}
+	}
+
+	& form#search-by-name{
+		width: 60vmax;
 	}
 	
 	& .results-wrapper{

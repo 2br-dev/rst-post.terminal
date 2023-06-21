@@ -694,13 +694,14 @@ if(document.querySelectorAll(".rs-amount").length) {
 
 if($('.air-picker').length)
 {
-	new AirDatepicker('.air-picker', {
+	let airPicker = new AirDatepicker('.air-picker', {
 		view: 'years',
 		position: 'top left',
 		autoClose: true,
 		dateFormat: 'dd MMMM yyyy',
 		minDate: Date.parse('1 jan 1923'),
-		maxDate: Date.parse('31 dec 2023')
+		maxDate: Date.parse('31 dec 2023'),
+		startDate: Date.parse('1 jul 1980')
 	})
 }
 

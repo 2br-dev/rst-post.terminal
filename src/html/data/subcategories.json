@@ -1,0 +1,57 @@
+[
+	{
+		"name": "Шампуни, баль&shy;замы для волос",
+		"image": "/img/subcats/shampoo.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Гели для душа",
+		"image": "/img/subcats/gels.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Мыло",
+		"image": "/img/subcats/soap.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Гигиена полости рта",
+		"image": "/img/subcats/mouth.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Средства для бритья",
+		"image": "/img/subcats/razor.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Крема",
+		"image": "/img/subcats/creme.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Дезодаранты",
+		"image": "/img/subcats/cologne.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Ватная продукция",
+		"image": "/img/subcats/wools.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Женская гигиена",
+		"image": "/img/subcats/female.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Салфетки, платки носовые",
+		"image": "/img/subcats/napkin.svg",
+		"link": "/category.html"
+	},
+	{
+		"name": "Губки для тела, мочалки",
+		"image": "/img/subcats/spoonge.svg",
+		"link": "/category.html"
+	}
+]

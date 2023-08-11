@@ -11,7 +11,7 @@
 				<div class="header-top">
 					<div class="ht-left">
 						<a href="./catalog.html" class="bttn"><i class="mdi mdi-chevron-left"></i>Каталог</a>
-						<h1>Чай, кофе, сахар, мёд</h1>
+						<h1>Красота и здоровье</h1>
 					</div>
 					<div class="ht-right">
 						@@include('./parts/cart-icon.html')
@@ -31,8 +31,16 @@
 				</div>
 			</div>
 			<div class="content">
-				<div class="products overflow">
-					@@loop('./parts/product-card.html', './data/products.json')
+				<div class="overflow">
+					<div class="subcategories">
+						@@loop('./parts/subcat.html', './data/subcategories.json')
+					</div>
+					<div class="text-divider">
+						Вы можете выбрать подкатегорию выше<span class="mdi mdi-arrow-up-bold"></span> или просмотреть весь товар категории ниже <span class="mdi mdi-arrow-down-bold"></span>
+					</div>
+					<div class="products">
+						@@loop('./parts/product-card.html', './data/products.json')
+					</div>
 				</div>
 			</div>
 		</div>

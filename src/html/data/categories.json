@@ -2,7 +2,7 @@
 	{
 		"name": "Бакалея",
 		"image": "/img/grocery.png",
-		"class": "active"
+		"class": ""
 	},
 	{
 		"name": "Гастрономия",
@@ -52,7 +52,7 @@
 	{
 		"name": "Красота и здоровье",
 		"image": "/img/beauty.png",
-		"class": ""
+		"class": "active"
 	},
 	{
 		"name": "Хозтовары",

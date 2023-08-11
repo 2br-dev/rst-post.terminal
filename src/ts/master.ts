@@ -382,7 +382,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// });
 
 	// Вызов экранной клавиатуры
-	$('body').on('focus', '.text-kb', (e:JQuery.FocusEvent) => {
+	$('body').on('focus', 'text-kb', (e:JQuery.FocusEvent) => {
 		focusedInput = <HTMLInputElement>e.currentTarget;
 		kb.onOpenEnd = () => {
 			focusedInput.focus();

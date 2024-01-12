@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "air-datepicker": "^3.3.5",
+    "imask": "^7.3.0",
     "jquery": "^3.6.3",
     "vanilla-lazyload": "^17.8.3"
   }

@@ -53,6 +53,7 @@
 
 $primary: #4E9912;
 $border-radius: 6px;
+$error: #d02323;
 
 $key: rgba(white, .9);
 $bg: rgba($primary, .7);
@@ -86,3 +87,4 @@ $bg: rgba($primary, .7);
 @import './pages/cart';
 @import './pages/service';
 @import './pages/proceed';
+@import './pages/payment-result';

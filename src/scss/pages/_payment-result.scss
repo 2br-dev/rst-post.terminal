@@ -1,0 +1,50 @@
+.center-content{
+
+	height: 100%;
+	
+	& .payment-result{
+
+		width: 60%;
+		height: 100%;
+		margin: auto;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	
+		$size: 64px;
+	
+		& i.mdi{
+			width: $size;
+			height: $size;
+			line-height: $size;
+			font-size: #{$size - 20};
+			border-radius: 50%;
+			display: inline-block;
+			color: #fff;
+		}
+
+		&#success{
+
+			& i{
+				background-color: $primary;
+			}
+
+			& h2{
+				color: $primary;
+			}
+		}
+
+		&#error{
+
+			& i{
+				background-color: $error;
+			}
+
+			& h2{
+				color: $error;
+			}
+		}
+	}
+}

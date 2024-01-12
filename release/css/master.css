@@ -21376,6 +21376,21 @@ td, th {
 * {
   -webkit-user-drag: none; }
 
+body .reload {
+  margin-left: 1.5rem;
+  font-size: 32px;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #4E9912;
+  color: #fff;
+  display: block;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1; }
+
 body .input-field {
   display: flex;
   flex-direction: column;
@@ -22215,7 +22230,9 @@ body .huge-content {
 
 body #personal-data {
   width: 70%;
-  margin: 100px auto 0 auto; }
+  margin: auto;
+  height: 100%;
+  margin-top: 40px; }
   body #personal-data .input-field {
     margin-bottom: 30px; }
     body #personal-data .input-field input, body #personal-data .input-field .current {
@@ -22234,3 +22251,31 @@ body [data-step="1"] .step-2 {
 
 body [data-step="2"] .step-1 {
   display: none; }
+
+.center-content {
+  height: 100%; }
+  .center-content .payment-result {
+    width: 60%;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .center-content .payment-result i.mdi {
+      width: 64px;
+      height: 64px;
+      line-height: 64px;
+      font-size: 44px;
+      border-radius: 50%;
+      display: inline-block;
+      color: #fff; }
+    .center-content .payment-result#success i {
+      background-color: #4E9912; }
+    .center-content .payment-result#success h2 {
+      color: #4E9912; }
+    .center-content .payment-result#error i {
+      background-color: #d02323; }
+    .center-content .payment-result#error h2 {
+      color: #d02323; }

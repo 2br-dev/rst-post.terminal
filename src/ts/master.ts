@@ -1,6 +1,7 @@
 
 import Keyboard from './lib/screen-keyboard';
 import AirDatepicker from 'air-datepicker';
+import IMask from 'imask';
 
 let kb:Keyboard;
 let digiKb:Keyboard;
@@ -382,7 +383,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// });
 
 	// Вызов экранной клавиатуры
-	$('body').on('focus', 'text-kb', (e:JQuery.FocusEvent) => {
+	$('body').on('focus', '.text-kb', (e:JQuery.FocusEvent) => {
 		focusedInput = <HTMLInputElement>e.currentTarget;
 		kb.onOpenEnd = () => {
 			focusedInput.focus();
@@ -704,6 +705,10 @@ if($('.air-picker').length)
 		startDate: Date.parse('1 jul 1980')
 	})
 }
+
+document.querySelectorAll('.phone-mask').forEach((masked:HTMLInputElement) => {
+	IMask( masked, { mask: '+{7} (000) 000-00-00' } )
+})
 
 $('body').on('mousedown', '.scroll-button', (e:JQuery.MouseDownEvent) => {
 	e.preventDefault();

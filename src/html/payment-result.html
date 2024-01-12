@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	@@include('./parts/head.html', {title: "Оплата успешно прошла!"})
+</head>
+<body>
+	<div class="full-page">
+		@@include('./parts/location.html')
+		<div class="content-wrapper">
+			<div class="header">
+				<div class="header-top">
+					<div class="ht-left">
+						<a href="./catalog.html" class="bttn touchable" id="back-button">
+							<i class="mdi mdi-chevron-left"></i>
+							<span class="button-text">Главная</span>
+						</a>
+						<h1 id="cart-title">Оплата заказа</h1>
+					</div>
+					<div class="ht-right">
+						<div class="logo"></div>
+					</div>
+				</div>
+				<div class="content">
+					<div class="center-content">
+						<div class="payment-result" id="success">
+							<!-- Успешная оплата -->
+							<i class="mdi mdi-check"></i>
+							<h2>Оплата успешно прошла!</h2>
+							<p>Ваш заказ будет отправлен адресату в ближайшее время. По всем вопросам, касающимся заказа вы можете обратиться по телефону <strong>+7 (123) 456-7890</strong></p>
+							<!-- /Успешная оплата -->
+						</div>
+						<div class="payment-result hide" id="error">
+							<!-- Ошибки при оплате -->
+							<i class="mdi mdi-close"></i>
+							<h2>Оплата не прошла</h2>
+							<p>К сожалению, оплатить заказ не получилось. Пожалуйста, проверьте корректность реквизитов и наличие достаточной суммы на вашем счёте для оплаты заказа. По всем вопросам, касающимся заказа вы можете обратиться по телефону <strong>+7 (123) 456-7890</strong></p>
+							<!-- /Ошибки при оплате -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

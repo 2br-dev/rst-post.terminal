@@ -1,5 +1,23 @@
 body{
 
+	$reload_width: 50px;
+
+	& .reload{
+		margin-left: $gutter-width;
+		font-size: 32px;
+		position: fixed;
+		bottom: 40px;
+		right: 40px;
+		background-color: $primary;
+		color: #fff;
+		display: block;
+		width: $reload_width;
+		text-align: center;
+		line-height: $reload_width;
+		border-radius: 50%;
+		aspect-ratio: 1 / 1;
+	}
+
 	& .input-field{
 		display: flex;
 		flex-direction: column;

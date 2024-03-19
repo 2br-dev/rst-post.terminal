@@ -742,6 +742,22 @@ $('body').on('touchmove', () => {
 	createInactiveTimer();
 });
 
+$('body').on('click', '#toggle-search', (e:JQuery.ClickEvent) => {
+	e.preventDefault();
+	$(e.currentTarget).parents('.header-top').toggleClass('search');
+})
+
+$('body').on('click', '#close-search', (e:JQuery.ClickEvent) => {
+	e.preventDefault();
+	$(e.currentTarget).parents('.header-top').removeClass('search');
+})
+
+$('body').on('click', '#do-search', (e:JQuery.ClickEvent) => {
+	e.preventDefault();
+	let form = $(e.currentTarget).parents('form')[0];
+	form.submit();
+})
+
 function createInactiveTimer()
 {
 	

@@ -28,7 +28,7 @@ body{
 			padding: 6px 0;
 		}
 
-		& input[type="text"], & textarea{
+		& input[type="text"], & input[type="search"], & textarea{
 			border: 0;
 			background: darken(white, 4);
 			padding: 0 10px;
@@ -257,6 +257,10 @@ body{
 				justify-content: flex-start;
 				align-items: center;
 
+				& #toggle-search{
+					color: $primary;
+				}
+
 				& .bttn{
 					white-space: nowrap;
 					padding: 0 10px;
@@ -383,6 +387,56 @@ body{
 							color: #9C9C9C;
 							padding: 4px;
 							border-radius: #{$border-radius / 2};
+						}
+					}
+				}
+			}
+
+			& .ht-search{
+				display: none;
+			}
+
+			&.search{
+
+				& .ht-right{
+					display: none;
+				}
+
+				& .ht-left{
+					
+					& .bttn{
+						margin-right: 20px;
+					}
+
+					& h1{
+						display: none;
+					}
+				}
+
+				& .ht-search{
+					display: flex;
+					flex-grow: 1;
+					margin-left: 20px;
+
+					& .input-field{
+						margin: 0;
+						flex-grow: 1;
+					}
+
+					& .buttons{
+
+						margin-left: 20px;
+						display: flex;
+						align-items: center;
+
+						& > *{
+							margin-left: 10px;
+						}
+
+						& .bttn-cancel{
+							@extend .bttn-accent;
+							color: $primary;
+							background-image: linear-gradient(to bottom, #efefef, #ccc);
 						}
 					}
 				}

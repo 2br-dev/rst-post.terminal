@@ -21398,7 +21398,7 @@ body .input-field {
   body .input-field label {
     font-size: 24px;
     padding: 6px 0; }
-  body .input-field input[type="text"], body .input-field .combo-field .current, body .combo-field .input-field .current, body .input-field textarea {
+  body .input-field input[type="text"], body .input-field .combo-field .current, body .combo-field .input-field .current, body .input-field input[type="search"], body .input-field textarea {
     border: 0;
     background: whitesmoke;
     padding: 0 10px;
@@ -21407,11 +21407,11 @@ body .input-field {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.4) inset;
     font-family: 'Montserrat';
     font-size: 20px; }
-    body .input-field input[type="text"]:focus, body .input-field .combo-field .current:focus, body .combo-field .input-field .current:focus, body .input-field textarea:focus {
+    body .input-field input[type="text"]:focus, body .input-field .combo-field .current:focus, body .combo-field .input-field .current:focus, body .input-field input[type="search"]:focus, body .input-field textarea:focus {
       outline: none; }
-    body .input-field input[type="text"]::-moz-placeholder, body .input-field .combo-field .current::-moz-placeholder, body .combo-field .input-field .current::-moz-placeholder, body .input-field textarea::-moz-placeholder {
+    body .input-field input[type="text"]::-moz-placeholder, body .input-field .combo-field .current::-moz-placeholder, body .combo-field .input-field .current::-moz-placeholder, body .input-field input[type="search"]::-moz-placeholder, body .input-field textarea::-moz-placeholder {
       color: #ccc; }
-    body .input-field input[type="text"]::placeholder, body .input-field .combo-field .current::placeholder, body .combo-field .input-field .current::placeholder, body .input-field textarea::placeholder {
+    body .input-field input[type="text"]::placeholder, body .input-field .combo-field .current::placeholder, body .combo-field .input-field .current::placeholder, body .input-field input[type="search"]::placeholder, body .input-field textarea::placeholder {
       color: #ccc; }
   body .input-field textarea {
     resize: none; }
@@ -21474,7 +21474,7 @@ body .buttons-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px; }
-  body .buttons-wrapper .bttn.huge, body .buttons-wrapper .huge.bttn-outline, body .buttons-wrapper .huge.bttn-accent {
+  body .buttons-wrapper .bttn.huge, body .buttons-wrapper .huge.bttn-outline, body .buttons-wrapper .huge.bttn-accent, body .buttons-wrapper .header .header-top.search .ht-search .buttons .huge.bttn-cancel, body .header .header-top.search .ht-search .buttons .buttons-wrapper .huge.bttn-cancel {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21488,7 +21488,7 @@ body .buttons-wrapper {
     text-transform: uppercase;
     text-align: center;
     background: linear-gradient(to bottom, #7ee62b, #4E9912); }
-    body .buttons-wrapper .bttn.huge.pressed, body .buttons-wrapper .huge.pressed.bttn-outline, body .buttons-wrapper .huge.pressed.bttn-accent {
+    body .buttons-wrapper .bttn.huge.pressed, body .buttons-wrapper .huge.pressed.bttn-outline, body .buttons-wrapper .huge.pressed.bttn-accent, body .buttons-wrapper .header .header-top.search .ht-search .buttons .huge.pressed.bttn-cancel, body .header .header-top.search .ht-search .buttons .buttons-wrapper .huge.pressed.bttn-cancel {
       background: linear-gradient(to top, #7ee62b, #4E9912); }
 
 body .content-wrapper {
@@ -21528,7 +21528,7 @@ body .logo {
   background-repeat: no-repeat;
   background-position: center; }
 
-body .bttn, body .bttn-outline, body .bttn-accent {
+body .bttn, body .bttn-outline, body .bttn-accent, body .header .header-top.search .ht-search .buttons .bttn-cancel {
   font-family: 'Montserrat';
   padding: 0 20px;
   line-height: 36px;
@@ -21541,26 +21541,26 @@ body .bttn, body .bttn-outline, body .bttn-accent {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   background: linear-gradient(to bottom, white, #e6e6e6);
   font-size: 16px; }
-  body .bttn i, body .bttn-outline i, body .bttn-accent i {
+  body .bttn i, body .bttn-outline i, body .bttn-accent i, body .header .header-top.search .ht-search .buttons .bttn-cancel i {
     margin-right: 6px; }
-  body .bttn.pressed, body .pressed.bttn-outline, body .pressed.bttn-accent {
+  body .bttn.pressed, body .pressed.bttn-outline, body .pressed.bttn-accent, body .header .header-top.search .ht-search .buttons .pressed.bttn-cancel {
     background: linear-gradient(to top, white, #e6e6e6); }
 
-body .bttn-outline, body .bttn-accent {
+body .bttn-outline, body .bttn-accent, body .header .header-top.search .ht-search .buttons .bttn-cancel {
   box-shadow: none;
   background: #fff;
   border: 0;
   box-shadow: 0 0 0 1px #4E9912 inset; }
-  body .bttn-outline.pressed, body .pressed.bttn-accent {
+  body .bttn-outline.pressed, body .pressed.bttn-accent, body .header .header-top.search .ht-search .buttons .pressed.bttn-cancel {
     background: #4E9912;
     color: #fff; }
 
-body .bttn-accent {
+body .bttn-accent, body .header .header-top.search .ht-search .buttons .bttn-cancel {
   background: linear-gradient(to bottom, #7ee62b, #4E9912);
   color: #fff;
   box-shadow: none;
   border: none; }
-  body .bttn-accent.pressed {
+  body .bttn-accent.pressed, body .header .header-top.search .ht-search .buttons .pressed.bttn-cancel {
     background: linear-gradient(to top, #7ee62b, #4E9912);
     color: #fff; }
 
@@ -21575,7 +21575,9 @@ body .header {
       display: flex;
       justify-content: flex-start;
       align-items: center; }
-      body .header .header-top .ht-left .bttn, body .header .header-top .ht-left .bttn-outline, body .header .header-top .ht-left .bttn-accent {
+      body .header .header-top .ht-left #toggle-search {
+        color: #4E9912; }
+      body .header .header-top .ht-left .bttn, body .header .header-top .ht-left .bttn-outline, body .header .header-top .ht-left .bttn-accent, body .header .header-top.search .ht-left .ht-search .buttons .bttn-cancel, body .header .header-top.search .ht-search .buttons .ht-left .bttn-cancel {
         white-space: nowrap;
         padding: 0 10px; }
       body .header .header-top .ht-left h1 {
@@ -21662,6 +21664,30 @@ body .header {
           color: #9C9C9C;
           padding: 4px;
           border-radius: 3px; }
+    body .header .header-top .ht-search {
+      display: none; }
+    body .header .header-top.search .ht-right {
+      display: none; }
+    body .header .header-top.search .ht-left .bttn, body .header .header-top.search .ht-left .bttn-outline, body .header .header-top.search .ht-left .bttn-accent, body .header .header-top.search .ht-left .ht-search .buttons .bttn-cancel, body .header .header-top.search .ht-search .buttons .ht-left .bttn-cancel {
+      margin-right: 20px; }
+    body .header .header-top.search .ht-left h1 {
+      display: none; }
+    body .header .header-top.search .ht-search {
+      display: flex;
+      flex-grow: 1;
+      margin-left: 20px; }
+      body .header .header-top.search .ht-search .input-field {
+        margin: 0;
+        flex-grow: 1; }
+      body .header .header-top.search .ht-search .buttons {
+        margin-left: 20px;
+        display: flex;
+        align-items: center; }
+        body .header .header-top.search .ht-search .buttons > * {
+          margin-left: 10px; }
+        body .header .header-top.search .ht-search .buttons .bttn-cancel {
+          color: #4E9912;
+          background-image: linear-gradient(to bottom, #efefef, #ccc); }
   body .header .header-bottom {
     margin-top: 20px;
     font-size: 16px; }
@@ -21840,11 +21866,11 @@ body {
   .welcome .logo {
     background-image: url(../img/logo-dark.svg);
     margin-bottom: 8vmax; }
-  .welcome .buttons-wrapper .bttn.huge, .welcome .buttons-wrapper body .huge.bttn-outline, body .welcome .buttons-wrapper .huge.bttn-outline, .welcome .buttons-wrapper body .huge.bttn-accent, body .welcome .buttons-wrapper .huge.bttn-accent {
+  .welcome .buttons-wrapper .bttn.huge, .welcome .buttons-wrapper body .huge.bttn-outline, body .welcome .buttons-wrapper .huge.bttn-outline, .welcome .buttons-wrapper body .huge.bttn-accent, body .welcome .buttons-wrapper .huge.bttn-accent, .welcome .buttons-wrapper body .header .header-top.search .ht-search .buttons .huge.bttn-cancel, body .header .header-top.search .ht-search .buttons .welcome .buttons-wrapper .huge.bttn-cancel {
     color: #4E9912;
     background: linear-gradient(to bottom, white, #cccccc);
     border: 0; }
-    .welcome .buttons-wrapper .bttn.huge.pressed, .welcome .buttons-wrapper body .huge.pressed.bttn-outline, body .welcome .buttons-wrapper .huge.pressed.bttn-outline, .welcome .buttons-wrapper body .huge.pressed.bttn-accent, body .welcome .buttons-wrapper .huge.pressed.bttn-accent {
+    .welcome .buttons-wrapper .bttn.huge.pressed, .welcome .buttons-wrapper body .huge.pressed.bttn-outline, body .welcome .buttons-wrapper .huge.pressed.bttn-outline, .welcome .buttons-wrapper body .huge.pressed.bttn-accent, body .welcome .buttons-wrapper .huge.pressed.bttn-accent, .welcome .buttons-wrapper body .header .header-top.search .ht-search .buttons .huge.pressed.bttn-cancel, body .header .header-top.search .ht-search .buttons .welcome .buttons-wrapper .huge.pressed.bttn-cancel {
       background: linear-gradient(to bottom, #cccccc, white); }
 
 body .triple-field {
@@ -22067,7 +22093,7 @@ body .products {
         margin-right: auto;
         position: relative;
         perspective: 200px; }
-        body .products .product-card .product-data .price-flipper .bttn-accent {
+        body .products .product-card .product-data .price-flipper .bttn-accent, body .products .product-card .product-data .price-flipper .header .header-top.search .ht-search .buttons .bttn-cancel, body .header .header-top.search .ht-search .buttons .products .product-card .product-data .price-flipper .bttn-cancel {
           font-size: 20px; }
         body .products .product-card .product-data .price-flipper.counter-shown .front {
           transform: rotateX(-180deg); }

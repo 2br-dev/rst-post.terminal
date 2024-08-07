@@ -21394,7 +21394,22 @@ body .reload {
 body .input-field {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  position: relative; }
+  body .input-field .backspace {
+    border: 0;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 70px;
+    height: 38px;
+    background-color: transparent;
+    background-image: url(../img/backspace.svg);
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat; }
+    body .input-field .backspace:active {
+      filter: brightness(0.7); }
   body .input-field label {
     font-size: 24px;
     padding: 6px 0; }
@@ -21406,9 +21421,12 @@ body .input-field {
     border-radius: 6px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.4) inset;
     font-family: 'Montserrat';
-    font-size: 20px; }
+    font-size: 24px;
+    padding-right: 80px; }
     body .input-field input[type="text"]:focus, body .input-field .combo-field .current:focus, body .combo-field .input-field .current:focus, body .input-field input[type="search"]:focus, body .input-field textarea:focus {
       outline: none; }
+      body .input-field input[type="text"]:focus ~ .backspace, body .input-field .combo-field .current:focus ~ .backspace, body .combo-field .input-field .current:focus ~ .backspace, body .input-field input[type="search"]:focus ~ .backspace, body .input-field textarea:focus ~ .backspace {
+        opacity: 1; }
     body .input-field input[type="text"]::-moz-placeholder, body .input-field .combo-field .current::-moz-placeholder, body .combo-field .input-field .current::-moz-placeholder, body .input-field input[type="search"]::-moz-placeholder, body .input-field textarea::-moz-placeholder {
       color: #ccc; }
     body .input-field input[type="text"]::placeholder, body .input-field .combo-field .current::placeholder, body .combo-field .input-field .current::placeholder, body .input-field input[type="search"]::placeholder, body .input-field textarea::placeholder {
@@ -21765,9 +21783,9 @@ body {
   height: 40vh;
   bottom: 0;
   left: 0;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: .25vmax;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 4.2vmax;
   box-sizing: border-box;
   background: rgba(78, 153, 18, 0.7);
@@ -21775,6 +21793,10 @@ body {
   transform: translateY(100%);
   pointer-events: none;
   z-index: 200; }
+  .screen-keyboard > * {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center; }
   .screen-keyboard.shown {
     transform: none;
     pointer-events: all; }
@@ -21797,17 +21819,24 @@ body {
     .screen-keyboard.shift .key.shift {
       background-color: #4E9912;
       color: #fff; }
+  .screen-keyboard .kb-controls {
+    border: 1px solid red;
+    flex-basis: 80%;
+    display: flex; }
   .screen-keyboard .key {
     border: 0;
     font-size: 2.7vmax;
     font-family: 'Montserrat';
     font-weight: 600;
     border-radius: .4vmax;
-    background: rgba(255, 255, 255, 0.9); }
+    background: rgba(255, 255, 255, 0.9);
+    width: calc(100% / 13);
+    margin: .25vmax; }
     .screen-keyboard .key.long {
-      grid-column: auto / span 2; }
+      flex-basis: 120px;
+      flex-shrink: 0; }
     .screen-keyboard .key.space {
-      grid-column: auto / span 10; }
+      width: 60%; }
       .screen-keyboard .key.space:before {
         content: 'Пробел'; }
     .screen-keyboard .key.pressed {
@@ -21821,8 +21850,9 @@ body {
   height: 40vh;
   bottom: 0;
   left: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: .25vmax;
   padding: 4.2vmax;
   box-sizing: border-box;
@@ -21831,6 +21861,14 @@ body {
   transform: translateY(100%);
   pointer-events: none;
   z-index: 200; }
+  .digital-keyboard > * {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    margin-bottom: 2px; }
+    .digital-keyboard > * > * {
+      width: 20%;
+      margin: 0 2px; }
   .digital-keyboard.shown {
     transform: none;
     pointer-events: all; }
@@ -21855,6 +21893,8 @@ body {
     font-weight: 600;
     border-radius: .4vmax;
     background: rgba(255, 255, 255, 0.9); }
+    .digital-keyboard .digital-key:last-of-type {
+      grid-column: 2 / 3; }
     .digital-keyboard .digital-key.long {
       grid-column: auto / span 2; }
     .digital-keyboard .digital-key.pressed {
@@ -21879,9 +21919,6 @@ body .triple-field {
   grid-gap: 6px; }
   body .triple-field .day {
     width: 120px; }
-
-body #ordernum {
-  margin-bottom: 20px; }
 
 body .conditions {
   display: flex; }

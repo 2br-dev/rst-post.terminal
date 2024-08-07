@@ -295,7 +295,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	fillDays(); //Заполняем дни
 
 	kb = new Keyboard(); //Создание клавиатуры
-	let digiKeys = ["1","2","3","4","5","6","7","8","9","0","⇐"];
+	let digiKeys = [
+		{
+			class: "line1",
+			keys: ["1", "2", "3"]
+		},
+		{
+			class: "line1",
+			keys: ["4", "5", "6"]
+		},
+		{
+			class: "line1",
+			keys: ["7", "8", "9"]
+		},
+		{
+			class: "controls",
+			keys: ["0", "⇐"]
+		},
+	];
 	digiKb = new Keyboard({
 		keys: digiKeys,
 		keyClassName: 'digital-key',
@@ -313,6 +330,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			let start = focusedInput.value.substring(0, cursor);
 			let end = focusedInput.value.substring(cursor);
 			let final = start + char + end;
+			debugger;
 			focusedInput.value = final;
 			focusedInput.selectionStart = cursor + 1;
 			focusedInput.selectionEnd = cursor + 1;
@@ -326,38 +344,88 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		let start = focusedInput.value.substring(0, cursor - 1);
 		let end = focusedInput.value.substring(cursor);
 		let final = start + end;
+		debugger;
 		focusedInput.value = final;
 		focusedInput.selectionStart = cursor - 1;
 		focusedInput.selectionEnd = cursor - 1;
-	}
+		focusedInput.focus();
+	};
 
 	// Клавиатура – отработка нажатия
 	digiKb.onKeyPress = char => {
-	
+		
 		focusedInput.focus();
-	
+		let val = focusedInput.value;
+		let caret = parseInt(focusedInput.dataset['caret'] || "4");
+
+		if(caret+1 > 18) return;
+
 		if (char)
 		{
-			let cursor = focusedInput.selectionStart;
-			let start = focusedInput.value.substring(0, cursor);
-			let end = focusedInput.value.substring(cursor);
-			let final = start + char + end;
-			focusedInput.value = final;
-			focusedInput.selectionStart = cursor + 1;
-			focusedInput.selectionEnd = cursor + 1;
+			
+			let updateChar = (caret:number) => {
+				
+				let reserved = [" ", "(", ")", "-"];
+				let nextChar = val.substr(caret, 1);
+				
+				if(reserved.indexOf(nextChar) !== -1){
+					caret++;
+					updateChar(caret);
+				}else{
+					let start = val.substr(0, caret);
+					let end = val.substr(caret + 1);
+					let final = start + char + end;
+					caret++;
+					focusedInput.value = final;
+					focusedInput.dataset['caret'] = caret.toString();
+					setTimeout(() => {
+						focusedInput.selectionStart = caret;
+						focusedInput.selectionEnd = caret;
+					})
+				}
+			}
+
+			updateChar(caret);
 		}
-	
 	}
 	
 	// Клавиатура – отработка удаления символа
 	digiKb.onErase = () => {
-		let cursor = focusedInput.selectionStart;
-		let start = focusedInput.value.substring(0, cursor - 1);
-		let end = focusedInput.value.substring(cursor);
-		let final = start + end;
-		focusedInput.value = final;
-		focusedInput.selectionStart = cursor - 1;
-		focusedInput.selectionEnd = cursor - 1;
+
+		let val = focusedInput.value;
+		let caret:number;
+
+		if(val == null || val == ""){
+			caret = parseInt(focusedInput.dataset['caret'] || "4");
+		}else{
+			caret = focusedInput.selectionStart;
+		}
+
+		if(caret <= 4) return;
+
+		let updateChar = (caret:number) => {
+			
+			let reserved = [" ", "(", ")", "-"];
+			let nextChar = val.substr(caret - 1, 1);
+			
+			if(reserved.indexOf(nextChar) !== -1){
+				caret--;
+				updateChar(caret);
+			}else{
+				let start = val.substr(0, caret - 1);
+				let end = val.substr(caret);
+				let final = start + "_" + end;
+				caret--;
+				focusedInput.value = final;
+				focusedInput.dataset['caret'] = caret.toString();
+				setTimeout(() => {
+					focusedInput.selectionStart = caret;
+					focusedInput.selectionEnd = caret;
+				})
+			}
+		}
+
+		updateChar(caret);
 	}
 
 	document.querySelectorAll('.touchable').forEach(el => {
@@ -372,6 +440,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		el.addEventListener('click', priceShowFlip);
 	});
 
+	$('body').on('focus', '.phone-mask', (e:JQuery.FocusEvent) => {
+		let el = e.target as HTMLInputElement;
+		if(el.value === ""){
+			el.value = "+7 (___) ___-__-__";
+			setTimeout(() => {
+				el.selectionStart = 4;
+				el.selectionEnd = 4;
+			})
+		}
+	})
+
 	// Увеличение количества в карточке
 	// document.querySelectorAll('.price-increase').forEach(el => {
 	// 	el.addEventListener('click', increaseCount);
@@ -384,6 +463,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// Вызов экранной клавиатуры
 	$('body').on('focus', '.text-kb', (e:JQuery.FocusEvent) => {
+		kb?.close();
+		digiKb?.close();
 		focusedInput = <HTMLInputElement>e.currentTarget;
 		kb.onOpenEnd = () => {
 			focusedInput.focus();
@@ -393,6 +474,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// Вызов цифровой клавиатуры
 	$('body').on('focus', '.digi-kb', (e:JQuery.FocusEvent) => {
+		kb?.close();
+		digiKb?.close();
 		focusedInput = <HTMLInputElement>e.currentTarget;
 		digiKb.onOpenEnd = () => {
 			focusedInput.focus();
@@ -405,7 +488,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		let path = e.composedPath();
 		
 		let filter = path.filter(el => {
-			if((<HTMLElement>el).tagName == "INPUT" || (<HTMLElement>el).tagName == "TEXTAREA")
+			if((<HTMLElement>el).tagName == "INPUT" || (<HTMLElement>el).tagName == "TEXTAREA" || (<HTMLElement> el).className === "backspace")
 			{
 				return el;
 			}else{
@@ -557,7 +640,11 @@ if(document.querySelectorAll(".rs-checkout_form").length){
 
                 element.addEventListener("focus", evt => {
 
+					kb?.close();
+					digiKb?.close();
+
                     focusedInput = <HTMLInputElement>evt.currentTarget;
+					focusedInput.dataset['caret'] = focusedInput.selectionStart?.toString();
                     kb.onOpenEnd = () => {
                         focusedInput.focus();
                     }
@@ -706,9 +793,9 @@ if($('.air-picker').length)
 	})
 }
 
-document.querySelectorAll('.phone-mask').forEach((masked:HTMLInputElement) => {
-	IMask( masked, { mask: '+{7} (000) 000-00-00' } )
-})
+// document.querySelectorAll('.phone-mask').forEach((masked:HTMLInputElement) => {
+// 	IMask( masked, { mask: '+{7} (000) 000-00-00', lazy: false } )
+// })
 
 $('body').on('mousedown', '.scroll-button', (e:JQuery.MouseDownEvent) => {
 	e.preventDefault();
@@ -741,6 +828,29 @@ $('body').on('touchmove', () => {
 	destroyInactiveTimer();
 	createInactiveTimer();
 });
+
+$('body').on('select', '.phone-mask', (e:JQuery.SelectEvent) => {
+	e.preventDefault();
+	let el = e.target as HTMLInputElement;
+	el.dataset['caret'] = el.selectionStart?.toString();
+})
+
+$('body').on('click', (e:JQuery.ClickEvent) => {
+	let path = e.originalEvent?.composedPath();
+	let key = Array.from(path).filter((e:EventTarget) => {
+		let el = e as HTMLElement;
+		if(el.classList){
+			return el.classList.contains("digital-key") || el.classList.contains('phone-mask');
+		}
+	});
+	if(key.length === 0){
+		document.querySelectorAll('input.phone-mask').forEach((input:HTMLInputElement) => {
+			if(input.value === "+7 (___) ___-__-__"){
+				input.value = "";
+			}
+		})
+	}
+})
 
 $('body').on('click', '#toggle-search', (e:JQuery.ClickEvent) => {
 	e.preventDefault();

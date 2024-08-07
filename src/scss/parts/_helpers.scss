@@ -22,6 +22,25 @@ body{
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 20px;
+		position: relative;
+
+		& .backspace{
+			border: 0;
+			position: absolute;
+			bottom: 5px;
+			right: 5px;
+			width: 70px;
+			height: 38px;
+			background-color: transparent;
+			background-image: url(/img/backspace.svg);
+			background-size: contain;
+			background-position: right center;
+			background-repeat: no-repeat;
+
+			&:active{
+				filter: brightness(0.7);
+			}
+		}
 
 		& label{
 			font-size: 24px;
@@ -36,10 +55,15 @@ body{
 			border-radius: $border-radius;
 			box-shadow: 0 0 2px rgba(black, .4) inset;
 			font-family: 'Montserrat';
-			font-size: 20px;
+			font-size: 24px;
+			padding-right: 80px;
 
 			&:focus{
 				outline: none;
+
+				& ~ .backspace{
+					opacity: 1;
+				}
 			}
 
 			&::placeholder{

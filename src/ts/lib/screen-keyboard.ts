@@ -12,9 +12,14 @@ interface IKeyboard
 	close: () => void;
 }
 
+interface IKeyGroup{
+	class: string,
+	keys: string[]
+}
+
 interface IKeyboardConstructorParams
 {
-	keys?: Array<string>;
+	keys?: IKeyGroup[];
 	keyboardClassName?: string;
 	keyClassName?: string;
 }
@@ -22,44 +27,62 @@ interface IKeyboardConstructorParams
 class Keyboard implements IKeyboard
 {
 	private keys = [];
-	private default_keys = [
-		'ё',
-		'й',
-		'ц',
-		'у',
-		'к',
-		'е',
-		'н',
-		'г',
-		'ш',
-		'щ',
-		'⇐',
-		'з',
-		'х',
-		'ъ',
-		'ф',
-		'ы',
-		'в',
-		'а',
-		'п',
-		'р',
-		'о',
-		'л',
-		'д',
-		'ж',
-		'э',
-		'я',
-		'ч',
-		'с',
-		'м',
-		'и',
-		'т',
-		'ь',
-		'ъ',
-		'б',
-		'ю',
-		'⇧',
-		' '
+	private default_keys:IKeyGroup[] = [
+		{
+			"class": "line1",
+			"keys": [
+				'й',
+				'ц',
+				'у',
+				'к',
+				'е',
+				'н',
+				'г',
+				'ш',
+				'щ',
+				'з',
+				'х',
+				'ъ',
+			]
+		},
+		{
+			"class": "line2",
+			"keys": [
+				'ф',
+				'ы',
+				'в',
+				'а',
+				'п',
+				'р',
+				'о',
+				'л',
+				'д',
+				'ж',
+				'э',
+			]
+		},
+		{
+			"class": "line3",
+			"keys": [
+				'я',
+				'ч',
+				'с',
+				'м',
+				'и',
+				'т',
+				'ъ',
+				'б',
+				'ю',
+				'ё',
+			]
+		},{
+			"class": 'controls',
+			"keys": [
+				'⇧',
+				' ',
+				'⇐',
+			]
+		}
 	];
 	public shiftPressed:boolean;
 	public container:HTMLDivElement;
@@ -102,10 +125,18 @@ class Keyboard implements IKeyboard
 		this.container.appendChild(closer);
 		document.body.appendChild(this.container);
 
-		this.keys.forEach(char => {
-			let key = new Key(char);
-			key.append(this.container, keyClass);
-			key.onPress = this.onPress.bind(this);
+		// Основной набор клавиш
+		this.keys.forEach((group:{class:string, keys:string[]}) => {
+			let groupContainer = <HTMLDivElement>document.createElement('DIV');
+			groupContainer.className = group.class;
+
+			group.keys.forEach(char => {
+				let key = new Key(char);
+				key.append(groupContainer, keyClass);
+				key.onPress = this.onPress.bind(this);
+			})
+
+			this.container.append(groupContainer);
 		});
 	}
 
@@ -118,6 +149,7 @@ class Keyboard implements IKeyboard
 
 	public close()
 	{
+		
 		this.onCloseStart();
 		this.container.classList.remove("shown");
 		setTimeout(this.onCloseEnd, 400);

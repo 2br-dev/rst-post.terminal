@@ -43,7 +43,7 @@ body{
 		}
 
 		& label{
-			font-size: 24px;
+			font-size:clamp(17px, 2.5vw, 24px);
 			padding: 6px 0;
 		}
 
@@ -55,8 +55,8 @@ body{
 			border-radius: $border-radius;
 			box-shadow: 0 0 2px rgba(black, .4) inset;
 			font-family: 'Montserrat';
-			font-size: 24px;
-			padding-right: 80px;
+			font-size:clamp(17px, 2.5vw, 24px);
+			// padding-right: 80px;
 
 			&:focus{
 				outline: none;
@@ -150,16 +150,17 @@ body{
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			border: 3px solid #fff;
-			height: 30vh;
+			border: clamp(1px, .25vw, 3px) solid #fff;
+			height: clamp(20vh, 8vw, 30vh);
 			border-radius: calc(#{$border-radius} * 2);
 			font-family: 'Montserrat';
 			font-weight: 700;
-			font-size: 23px;
 			color: #fff;
 			text-transform: uppercase;
 			text-align: center;
 			background: linear-gradient(to bottom, lighten($primary, 20), $primary);
+			font-size: clamp(18px, 2.2vw, 23px);
+			line-height: 1.2em;
 			
 			&.pressed{
 				background: linear-gradient(to top, lighten($primary, 20), $primary);
@@ -172,7 +173,7 @@ body{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding-top: 12vmax;
+		justify-content: center;
 
 		& .content{
 			width: 100%;
@@ -209,8 +210,8 @@ body{
 
 	& .logo{
 		background-image: url(/img/logo-light.svg);
-		width: 254px;
-		height: 55px;
+		width: 25vw;
+		aspect-ratio: 4.6 / 1;
 		margin-bottom: 2vmax;
 		background-size: contain;
 		background-repeat: no-repeat;
@@ -280,6 +281,7 @@ body{
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
+				gap: 1em;
 
 				& #toggle-search{
 					color: $primary;
@@ -296,6 +298,15 @@ body{
 					&.success{
 						color: $primary;
 						margin: 0;
+					}
+				}
+
+				& a{
+					
+					&:not(.bttn){
+						line-height: 2em;
+						width: 2em;
+						text-align: center;
 					}
 				}
 			}
@@ -427,10 +438,6 @@ body{
 				}
 
 				& .ht-left{
-					
-					& .bttn{
-						margin-right: 20px;
-					}
 
 					& h1{
 						display: none;
@@ -445,6 +452,10 @@ body{
 					& .input-field{
 						margin: 0;
 						flex-grow: 1;
+
+						& input{
+							width: 30vw;
+						}
 					}
 
 					& .buttons{

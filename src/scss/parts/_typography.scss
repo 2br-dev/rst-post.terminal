@@ -2,12 +2,13 @@
 
 body{
 	font-family: 'Montserrat';
-	font-size: 21px;
+	font-size: clamp(17px, 2.2vw, 21px);
 
 	& h1{
 		color: $primary;
 		text-transform: uppercase;
 		font-weight: 650;
-		font-size: 25px;
+		font-size: clamp(21px, 2.5vw, 25px);
+		margin-top: 0.2em;
 	}
 }

@@ -11,6 +11,10 @@ body{
 		grid-gap: 10px;
 		padding: 0 4px;
 		padding-bottom: 4px;
+		
+		@media(max-width: 1000px){
+			grid-template-columns: repeat(3, 1fr);
+		}
 
 		@include scrollbars;
 
@@ -64,7 +68,7 @@ body{
 
 		& .scroll-button{
 
-			$buttonSize: 70px;
+			$buttonSize: 50px;
 
 			display: block;
 			width: $buttonSize;
@@ -76,7 +80,7 @@ body{
 			transform: translateY(-50%);
 			text-align: center;
 			color: $primary;
-			font-size: 50px;
+			font-size: clamp(30px, 2.5vw, 50px);
 			border-top-right-radius: 50%;
 			border-bottom-right-radius: 50%;
 			border-top-left-radius: 0;
@@ -161,16 +165,17 @@ body{
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+		gap: 2px;
+		margin: 20px 0;
 		
 		& .subcategory{
-			
-			width: calc((100% / 6) - 10px);
-			margin: 5px;
+			// width: (100% / 5.1);
+			width: calc(25% - 2px);
+			max-width: 170px;
 			text-align: center;
 			padding: 10px;
 			color: $primary;
 			box-shadow: 0 0 0 1px $primary inset;
-			height: 115px;
 			display: flex;
 			flex-direction: column;
 			border-radius: 6px;
@@ -181,8 +186,7 @@ body{
 				
 				display: block;
 				
-				&.name{
-	
+				&.name{	
 					flex-grow: 1;
 					display: flex;
 					align-items: center;
@@ -192,6 +196,10 @@ body{
 			
 			& img{
 				width: 48px;
+
+				@media(max-width: 1000px){
+					display: none;
+				}
 			}
 		}
 		
@@ -214,8 +222,10 @@ body{
 		grid-gap: 10px;
 		max-height: calc(100vh - 8vmax - 180px);
 		padding-bottom: 10px;
-
-		@include scrollbars;
+		
+		@media(max-width: 1000px){
+			grid-template-columns: repeat(3, 1fr);
+		}
 
 		& .product-card{
 
@@ -267,10 +277,7 @@ body{
 					margin-right: auto;
 					position: relative;
 					perspective: 200px;
-
-                    & .bttn-accent{
-                      font-size: 20px;
-                    }
+					white-space: nowrap;
 					
 					&.counter-shown{
 						
@@ -286,6 +293,14 @@ body{
 					& .front{
 						transition: transform .2s linear;
 						backface-visibility: hidden;
+
+						
+						@media(max-width: 1000px){
+
+							& i{
+								display: none;
+							}
+						}
 					}
 					
 					& .back{

@@ -1,22 +1,47 @@
 body{
 
 	& #personal-data{
-		width: 70%;
+		width: 100%;
 		margin: auto;
-		height: 100%;
-		margin-top: 40px;
+		height: calc(100vh - 200px);
+		margin-top: clamp(10px, 2vw, 40px);
+		overflow-y: auto;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		& .row{
+			display: flex;
+			gap: 20px;
+
+			& .input-field{
+				flex-grow: 1;
+				width: 45%;
+			}
+		}
 
 		& .input-field{
-			margin-bottom: 30px;
+			margin-bottom: 16px;
 			
 			& input, & .current{
-				font-size: 24px;
+				font-size: clamp(17px, 2vw, 24px);
 				font-weight: 500;
 			}
 
 			& li{
 				font-size: 20px;
 			}
+		}
+	}
+
+	& .step-1{
+		height: calc(100vh - 100px);
+		display: flex;
+		flex-direction: column;
+
+		& .cart-content{
+			flex-grow: 1;
 		}
 	}
 

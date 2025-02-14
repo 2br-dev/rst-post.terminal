@@ -64,7 +64,7 @@ $bg: rgba($primary, .7);
 
 @mixin scrollbars{
 
-	padding-right: 24px;
+	padding-right: 16px;
 
 	&::-webkit-scrollbar{
 		width: 12px;

@@ -23,6 +23,10 @@
 			border-radius: 50%;
 			display: inline-block;
 			color: #fff;
+
+			@media(max-width: 1000px){
+				display: none;
+			}
 		}
 
 		&#success{

@@ -492,7 +492,7 @@
 
 .air-datepicker {
     --adp-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    --adp-font-size: 26px;
+    --adp-font-size: clamp(16px, 2.5vw, 26px);
     --adp-width: 400px;
     --adp-z-index: 100;
     --adp-padding: 10px;
@@ -526,7 +526,7 @@
     --adp-day-name-color: #ff9a19;
     --adp-day-name-color-hover: #8ad5f4;
     --adp-day-cell-width: 1fr;
-    --adp-day-cell-height: 46px;
+    --adp-day-cell-height: clamp(28px, 2.5vw, 46px);
     --adp-month-cell-height: 42px;
     --adp-year-cell-height: 56px;
     --adp-pointer-size: 10px;

@@ -330,7 +330,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			let start = focusedInput.value.substring(0, cursor);
 			let end = focusedInput.value.substring(cursor);
 			let final = start + char + end;
-			debugger;
 			focusedInput.value = final;
 			focusedInput.selectionStart = cursor + 1;
 			focusedInput.selectionEnd = cursor + 1;
@@ -344,7 +343,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		let start = focusedInput.value.substring(0, cursor - 1);
 		let end = focusedInput.value.substring(cursor);
 		let final = start + end;
-		debugger;
 		focusedInput.value = final;
 		focusedInput.selectionStart = cursor - 1;
 		focusedInput.selectionEnd = cursor - 1;
@@ -392,40 +390,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	// Клавиатура – отработка удаления символа
 	digiKb.onErase = () => {
 
-		let val = focusedInput.value;
-		let caret:number;
-
-		if(val == null || val == ""){
-			caret = parseInt(focusedInput.dataset['caret'] || "4");
-		}else{
-			caret = focusedInput.selectionStart;
-		}
-
-		if(caret <= 4) return;
-
-		let updateChar = (caret:number) => {
-			
-			let reserved = [" ", "(", ")", "-"];
-			let nextChar = val.substr(caret - 1, 1);
-			
-			if(reserved.indexOf(nextChar) !== -1){
-				caret--;
-				updateChar(caret);
-			}else{
-				let start = val.substr(0, caret - 1);
-				let end = val.substr(caret);
-				let final = start + "_" + end;
-				caret--;
-				focusedInput.value = final;
-				focusedInput.dataset['caret'] = caret.toString();
-				setTimeout(() => {
-					focusedInput.selectionStart = caret;
-					focusedInput.selectionEnd = caret;
-				})
-			}
-		}
-
-		updateChar(caret);
+		let cursor = focusedInput.selectionStart;
+		let start = focusedInput.value.substring(0, cursor - 1);
+		let end = focusedInput.value.substring(cursor);
+		let final = start + end;
+		focusedInput.value = final;
+		focusedInput.selectionStart = cursor - 1;
+		focusedInput.selectionEnd = cursor - 1;
+		focusedInput.focus();
 	}
 
 	document.querySelectorAll('.touchable').forEach(el => {
